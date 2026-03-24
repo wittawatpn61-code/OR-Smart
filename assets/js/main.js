@@ -221,3 +221,13 @@ startHero();
 
 });
 </script>
+<script>
+let kSlides = document.querySelectorAll(".knowledge-slider img");
+let kIndex = 0;
+
+setInterval(()=>{
+kSlides[kIndex].classList.remove("active");
+kIndex = (kIndex + 1) % kSlides.length;
+kSlides[kIndex].classList.add("active");
+},6000);
+</script>
