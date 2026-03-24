@@ -740,15 +740,26 @@ knowledgeLightbox.onclick = (e)=>{
 };
 </script>
 
-<!-- DOCTOR SCHEDULE SLIDER 11 รูป สไลด์ทุก 6 วินาที + กรอบจัตุรัส -->
-<section class="schedule-slider">
+<!-- DOCTOR & OR SCHEDULE -->
+<section class="or-schedule">
   <div class="container">
+
+    <!-- หัวข้อ ตารางห้องผ่าตัด (ใส่รูป A4 แนวนอน) -->
     <h2 class="section-title">
+      <i class="fa-solid fa-hospital-user"></i>
+      ตารางห้องผ่าตัด
+    </h2>
+    <div class="or-image">
+      <img src="assets/img/Comparison Table List Infographic Graph.png" alt="ตารางห้องผ่าตัด">
+    </div>
+
+    <!-- ตารางแพทย์ออกตรวจ (Slider) -->
+    <h2 class="section-title" style="margin-top:40px;">
       <i class="fa-solid fa-user-doctor"></i>
       ตารางแพทย์ออกตรวจ
     </h2>
 
-    <div class="slider">
+    <div class="slider doctor-slider">
       <img src="assets/img/Uro.jpg" alt="Urology" class="active">
       <img src="assets/img/Med1.jpg" alt="Medicine1">
       <img src="assets/img/Med.jpg" alt="Medicine2">
@@ -761,18 +772,27 @@ knowledgeLightbox.onclick = (e)=>{
       <img src="assets/img/เวสศาส.jpg" alt="Vascular">
       <img src="assets/img/รังสี.jpg" alt="Radiology">
     </div>
+
   </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="doctor-lightbox">
-  <span class="close">&times;</span>
-  <img id="doctor-lightbox-img">
-</div>
-
 <style>
-/* ===== SLIDER ===== */
-.schedule-slider .slider{
+/* ===== OR ROOM IMAGE A4 HORIZONTAL ===== */
+.or-image{
+  width:100%;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.or-image img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+}
+
+/* ===== DOCTOR SLIDER ===== */
+.doctor-slider{
   position:relative;
   width:100%;
   aspect-ratio:1 / 1; /* กรอบจัตุรัส */
@@ -782,7 +802,7 @@ knowledgeLightbox.onclick = (e)=>{
   margin-top:30px;
 }
 
-.schedule-slider .slider img{
+.doctor-slider img{
   position:absolute;
   width:100%;
   height:100%;
@@ -792,21 +812,8 @@ knowledgeLightbox.onclick = (e)=>{
   cursor:pointer;
 }
 
-.schedule-slider .slider img.active{
+.doctor-slider img.active{
   opacity:1;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .schedule-slider .slider{
-    aspect-ratio:1 / 1;
-  }
-}
-
-@media(max-width:480px){
-  .schedule-slider .slider{
-    aspect-ratio:1 / 1;
-  }
 }
 
 /* LIGHTBOX */
@@ -840,9 +847,9 @@ knowledgeLightbox.onclick = (e)=>{
 </style>
 
 <script>
-// ===== SLIDER LOGIC =====
+// ===== DOCTOR SLIDER LOGIC =====
 let doctorIndex = 0;
-const doctorSlides = document.querySelectorAll(".schedule-slider .slider img");
+const doctorSlides = document.querySelectorAll(".doctor-slider img");
 
 function showDoctorSlide(){
   doctorSlides.forEach(img => img.classList.remove("active"));
@@ -859,7 +866,7 @@ const doctorLightboxImg = document.getElementById("doctor-lightbox-img");
 const doctorCloseBtn = doctorLightbox.querySelector(".close");
 
 doctorSlides.forEach(img => {
-  img.addEventListener("click", ()=>{
+  img.addEventListener("click", ()=> {
     doctorLightbox.style.display = "flex";
     doctorLightboxImg.src = img.src;
   });
