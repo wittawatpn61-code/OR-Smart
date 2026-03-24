@@ -1245,3 +1245,188 @@ transition:0.3s;
 .person-photo:hover{
 transform:scale(1.05);
 }
+/* =========================
+PRO IMAGE VIEWER
+========================= */
+
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.92);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+flex-direction:column;
+}
+
+.viewer-img{
+max-width:85%;
+max-height:75%;
+border-radius:14px;
+box-shadow:0 15px 60px rgba(0,0,0,0.5);
+animation:zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.9);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+/* ปุ่มปิด */
+.viewer-close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:38px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+/* ปุ่มเลื่อน */
+.viewer-prev,
+.viewer-next{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(255,255,255,0.1);
+border:none;
+color:white;
+font-size:28px;
+padding:14px 18px;
+cursor:pointer;
+border-radius:10px;
+transition:0.2s;
+}
+
+.viewer-prev:hover,
+.viewer-next:hover{
+background:rgba(255,255,255,0.25);
+}
+
+.viewer-prev{ left:20px; }
+.viewer-next{ right:20px; }
+
+/* caption */
+.viewer-caption{
+margin-top:20px;
+text-align:center;
+color:white;
+}
+
+.viewer-caption h3{
+font-size:22px;
+margin-bottom:6px;
+}
+
+.viewer-caption p{
+font-size:16px;
+opacity:0.8;
+}
+
+/* hover รูป */
+.person-photo{
+cursor:pointer;
+transition:0.25s;
+}
+
+.person-photo:hover{
+transform:scale(1.08);
+}
+<script>
+
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewer-img");
+const viewerName = document.getElementById("viewer-name");
+const viewerRole = document.getElementById("viewer-role");
+
+const images = document.querySelectorAll(".person-card");
+
+let currentIndex = 0;
+
+// เปิด viewer
+images.forEach((card, index) => {
+
+card.addEventListener("click", () => {
+
+const img = card.querySelector("img");
+const name = card.querySelector("h3").innerText;
+const role = card.querySelector(".person-role").innerText;
+
+currentIndex = index;
+
+viewer.style.display = "flex";
+viewerImg.src = img.src;
+viewerName.innerText = name;
+viewerRole.innerText = role;
+
+});
+
+});
+
+// ปิด
+document.querySelector(".viewer-close").onclick = () => {
+viewer.style.display = "none";
+};
+
+// คลิกพื้นหลังปิด
+viewer.addEventListener("click", (e) => {
+if(e.target === viewer){
+viewer.style.display = "none";
+}
+});
+
+// ปุ่มเลื่อน
+function showImage(index){
+
+if(index < 0) index = images.length - 1;
+if(index >= images.length) index = 0;
+
+currentIndex = index;
+
+const card = images[currentIndex];
+const img = card.querySelector("img");
+const name = card.querySelector("h3").innerText;
+const role = card.querySelector(".person-role").innerText;
+
+viewerImg.src = img.src;
+viewerName.innerText = name;
+viewerRole.innerText = role;
+
+}
+
+document.querySelector(".viewer-prev").onclick = () => {
+showImage(currentIndex - 1);
+};
+
+document.querySelector(".viewer-next").onclick = () => {
+showImage(currentIndex + 1);
+};
+
+// keyboard control
+document.addEventListener("keydown", (e) => {
+
+if(viewer.style.display === "flex"){
+
+if(e.key === "Escape"){
+viewer.style.display = "none";
+}
+
+if(e.key === "ArrowRight"){
+showImage(currentIndex + 1);
+}
+
+if(e.key === "ArrowLeft"){
+showImage(currentIndex - 1);
+}
+
+}
+
+});
+
+</script>
