@@ -253,27 +253,29 @@ setInterval(()=>{
 </script>
 
 <script>
-let scheduleSlides = document.querySelectorAll(".slider-track img");
-let current = 0;
+const slides = document.querySelectorAll(".slider-track img");
+let index = 0;
 
-// auto slide
+function showSlide(i){
+slides.forEach(img => img.classList.remove("active"));
+slides[i].classList.add("active");
+}
+
+// auto slide ทุก 5 วิ
 setInterval(()=>{
-scheduleSlides[current].classList.remove("active");
-current = (current + 1) % scheduleSlides.length;
-scheduleSlides[current].classList.add("active");
+index = (index + 1) % slides.length;
+showSlide(index);
 },5000);
 
 // next
 document.querySelector(".next").onclick = () => {
-scheduleSlides[current].classList.remove("active");
-current = (current + 1) % scheduleSlides.length;
-scheduleSlides[current].classList.add("active");
+index = (index + 1) % slides.length;
+showSlide(index);
 };
 
 // prev
 document.querySelector(".prev").onclick = () => {
-scheduleSlides[current].classList.remove("active");
-current = (current - 1 + scheduleSlides.length) % scheduleSlides.length;
-scheduleSlides[current].classList.add("active");
+index = (index - 1 + slides.length) % slides.length;
+showSlide(index);
 };
 </script>
