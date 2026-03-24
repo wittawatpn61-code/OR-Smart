@@ -345,10 +345,10 @@ text-decoration:none;
 text-decoration:underline;
 }
 
-/* ===== SCHEDULE SLIDER ===== */
+/* ===== SCHEDULE SLIDER (1 IMAGE ONLY) ===== */
 .schedule-slider{
 position:relative;
-max-width:800px;
+max-width:700px;
 margin:auto;
 overflow:hidden;
 }
@@ -356,11 +356,14 @@ overflow:hidden;
 .slider-track{
 position:relative;
 width:100%;
-height:400px;
+height:380px;
 }
 
+/* ซ่อนทุกรูป */
 .slider-track img{
 position:absolute;
+top:0;
+left:0;
 width:100%;
 height:100%;
 object-fit:cover;
@@ -369,8 +372,10 @@ transition:opacity 0.8s ease;
 border-radius:12px;
 }
 
+/* แสดงทีละรูป */
 .slider-track img.active{
 opacity:1;
+z-index:1;
 }
 
 /* ปุ่ม */
