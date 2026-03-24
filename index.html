@@ -7,26 +7,34 @@
 
 <title>งานการพยาบาลห้องผ่าตัด | โรงพยาบาลมหาวิทยาลัยพะเยา</title>
 
+<meta name="description" content="เว็บไซต์งานการพยาบาลห้องผ่าตัด โรงพยาบาลมหาวิทยาลัยพะเยา ข้อมูลบุคลากร ข่าวประชาสัมพันธ์ เอกสาร และกิจกรรม">
+
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-/* ===== BASE ===== */
+/* ===== ROOT ===== */
 :root{
 --primary:#0f8a5f;
---dark:#0a6c49;
---light:#eaf7f3;
+--primary-dark:#0a6c49;
+--primary-light:#eaf7f3;
 --text:#1f2933;
+--gray:#6b7280;
 --border:#e5e7eb;
 --bg:#f8fafc;
 }
 
+/* ===== BASE ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:'IBM Plex Sans Thai',sans-serif;
 background:var(--bg);
 color:var(--text);
+line-height:1.7;
 }
 
 .container{
@@ -51,27 +59,39 @@ align-items:center;
 padding:16px 0;
 }
 
-.logo{color:var(--primary);font-weight:600;}
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+font-size:18px;
+color:var(--primary);
+}
 
 .navbar ul{
 display:flex;
 list-style:none;
-gap:20px;
+gap:26px;
 }
 
-.navbar a{text-decoration:none;color:var(--text);}
+.navbar a{
+text-decoration:none;
+color:var(--text);
+font-weight:500;
+}
+
 .navbar a:hover{color:var(--primary);}
 
-.mobile-menu{display:none;cursor:pointer;}
+.mobile-menu{display:none;font-size:22px;cursor:pointer;}
 
-/* ===== HERO + SLIDER ===== */
+/* ===== HERO SLIDER ===== */
 .hero{
 position:relative;
 height:75vh;
 overflow:hidden;
 }
 
-.slider img{
+.hero-slider img{
 position:absolute;
 width:100%;
 height:100%;
@@ -80,11 +100,13 @@ opacity:0;
 transition:1s;
 }
 
-.slider img.active{opacity:1;}
+.hero-slider img.active{opacity:1;}
 
-.overlay{
-background:rgba(0,0,0,0.35);
+.hero-overlay{
+position:relative;
+z-index:2;
 height:100%;
+background:rgba(0,0,0,0.35);
 display:flex;
 align-items:center;
 }
@@ -94,54 +116,130 @@ color:white;
 max-width:600px;
 }
 
-.btn{
+.hero h1{font-size:42px;margin-bottom:12px;}
+.hero p{font-size:18px;margin-bottom:26px;}
+
+.btn-primary{
 background:var(--primary);
 color:white;
-padding:10px 20px;
+padding:12px 22px;
 border-radius:8px;
 text-decoration:none;
+display:inline-flex;
+gap:8px;
 }
 
-/* ===== SECTION ===== */
-section{padding:60px 0;}
+.btn-primary:hover{background:var(--primary-dark);}
 
-.title{
+/* ===== SECTION ===== */
+section{padding:70px 0;}
+
+.section-title{
 text-align:center;
-margin-bottom:30px;
+font-size:28px;
+margin-bottom:40px;
 color:var(--primary);
 }
 
-/* ===== GRID ===== */
-.grid{
+/* ===== ABOUT ===== */
+.about-grid{
 display:grid;
-gap:20px;
+grid-template-columns:1fr 260px;
+gap:40px;
+align-items:center;
 }
 
-.grid-3{
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+.about-icon{
+font-size:120px;
+color:var(--primary-light);
+text-align:center;
 }
 
-/* ===== CARD ===== */
-.card{
+/* ===== NEWS ===== */
+.news-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
+}
+
+.news-card{
 background:white;
-padding:20px;
+padding:24px;
 border-radius:12px;
 border:1px solid var(--border);
 transition:.3s;
 }
 
-.card:hover{
+.news-card:hover{
 transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
-/* ===== KNOWLEDGE ===== */
+/* ===== EVENTS ===== */
+.event-list{
+list-style:none;
+max-width:600px;
+margin:auto;
+}
+
+.event-list li{
+padding:12px 0;
+border-bottom:1px solid var(--border);
+}
+
+.event-list i{
+color:var(--primary);
+margin-right:8px;
+}
+
+/* ===== DOCUMENT ===== */
+.doc-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.doc-card{
+background:white;
+padding:28px;
+text-align:center;
+border-radius:12px;
+border:1px solid var(--border);
+transition:.3s;
+}
+
+.doc-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.doc-card i{
+font-size:34px;
+color:var(--primary);
+margin-bottom:10px;
+}
+
+/* ===== KNOWLEDGE SLIDER ===== */
 .knowledge-slider{
 position:relative;
-height:300px;
 max-width:800px;
 margin:auto;
+height:300px;
 overflow:hidden;
 border-radius:12px;
+}
+
+.knowledge-slider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:1s;
+}
+
+.knowledge-slider img.active{
+opacity:1;
 }
 
 /* ===== FOOTER ===== */
@@ -149,18 +247,25 @@ border-radius:12px;
 background:var(--primary);
 color:white;
 text-align:center;
-padding:20px;
+padding:26px 0;
 }
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+.about-grid{grid-template-columns:1fr;}
+.about-icon{display:none;}
+}
+
 @media(max-width:768px){
 .navbar{display:none;}
 .navbar.active{display:block;}
 .mobile-menu{display:block;}
-.hero{height:60vh;}
+.hero{height:65vh;}
+.hero h1{font-size:32px;}
 }
 
 </style>
+
 </head>
 
 <body>
@@ -170,13 +275,14 @@ padding:20px;
 <div class="container nav-container">
 
 <div class="logo">
-<i class="fa-solid fa-hospital"></i> OR NURSE UPH
+<i class="fa-solid fa-hospital"></i>
+OR NURSE UPH
 </div>
 
 <nav class="navbar">
 <ul>
-<li><a href="#">เกี่ยวกับ</a></li>
-<li><a href="#">บุคลากร</a></li>
+<li><a href="#">เกี่ยวกับเรา</a></li>
+<li><a href="pages/personel.html">บุคลากร</a></li>
 <li><a href="#">ข่าว</a></li>
 <li><a href="#">เอกสาร</a></li>
 <li><a href="#">ติดต่อ</a></li>
@@ -192,58 +298,67 @@ padding:20px;
 
 <!-- HERO -->
 <section class="hero">
-<div class="slider">
+
+<div class="hero-slider">
 <img src="assets/img/banner1.jpg" class="active">
 <img src="assets/img/IMG_1624.jpg">
 <img src="assets/img/01.jpg">
 </div>
 
-<div class="overlay">
+<div class="hero-overlay">
 <div class="container hero-content">
+
 <h1>งานการพยาบาลห้องผ่าตัด</h1>
-<p>บริการปลอดภัย ได้มาตรฐาน ทันสมัย</p>
-<a href="#" class="btn">ดูเพิ่มเติม</a>
+
+<p>
+โรงพยาบาลมหาวิทยาลัยพะเยา  
+บริการพยาบาลห้องผ่าตัดที่ได้มาตรฐาน ปลอดภัย และทันสมัย
+</p>
+
+<a href="#" class="btn-primary">
+<i class="fa-solid fa-circle-info"></i>
+ดูข้อมูลเพิ่มเติม
+</a>
+
 </div>
 </div>
+
 </section>
 
-<!-- NEWS -->
-<section>
+<!-- ABOUT -->
+<section class="about">
 <div class="container">
-<h2 class="title">ข่าวประชาสัมพันธ์</h2>
 
-<div class="grid grid-3">
-<div class="card">พัฒนาห้องผ่าตัด</div>
-<div class="card">อบรมควบคุมเชื้อ</div>
-<div class="card">กิจกรรม OR</div>
+<h2 class="section-title">เกี่ยวกับหน่วยงาน</h2>
+
+<div class="about-grid">
+
+<div>
+<p>ให้บริการด้านการผ่าตัดครบวงจร ดูแลผู้ป่วยก่อน ระหว่าง และหลังผ่าตัด</p>
+</div>
+
+<div class="about-icon">
+<i class="fa-solid fa-stethoscope"></i>
 </div>
 
 </div>
-</section>
-
-<!-- DOCUMENT -->
-<section>
-<div class="container">
-<h2 class="title">เอกสาร</h2>
-
-<div class="grid grid-3">
-<a href="#" class="card">คู่มือ</a>
-<a href="#" class="card">แนวทาง</a>
-<a href="#" class="card">แบบฟอร์ม</a>
-</div>
-
 </div>
 </section>
 
 <!-- KNOWLEDGE -->
-<section>
+<section class="knowledge">
 <div class="container">
-<h2 class="title">สาระน่ารู้</h2>
 
-<div class="slider knowledge-slider">
+<h2 class="section-title">
+<i class="fa-solid fa-lightbulb"></i>
+สาระน่ารู้
+</h2>
+
+<div class="knowledge-slider">
 <img src="assets/img/01.jpg" class="active">
 <img src="assets/img/02.jpg">
 <img src="assets/img/03.jpg">
+<img src="assets/img/04.jpg">
 </div>
 
 </div>
@@ -251,29 +366,36 @@ padding:20px;
 
 <!-- FOOTER -->
 <footer class="footer">
-<p>© 2026 OR Nurse UPH</p>
+<div class="container">
+<p>© 2026 งานการพยาบาลห้องผ่าตัด โรงพยาบาลมหาวิทยาลัยพะเยา</p>
+</div>
 </footer>
 
+<!-- SCRIPT -->
 <script>
 
-// ใช้ function เดียวสำหรับทุก slider
-function autoSlider(selector){
-let slides = document.querySelectorAll(selector);
-let i = 0;
+// HERO SLIDER
+let heroSlides = document.querySelectorAll(".hero-slider img");
+let hIndex = 0;
 
 setInterval(()=>{
-slides[i].classList.remove("active");
-i = (i+1) % slides.length;
-slides[i].classList.add("active");
+heroSlides[hIndex].classList.remove("active");
+hIndex = (hIndex + 1) % heroSlides.length;
+heroSlides[hIndex].classList.add("active");
 },5000);
-}
 
-// เรียกใช้
-autoSlider(".hero .slider img");
-autoSlider(".knowledge-slider img");
+// KNOWLEDGE SLIDER
+let kSlides = document.querySelectorAll(".knowledge-slider img");
+let kIndex = 0;
 
-// mobile menu
-document.querySelector(".mobile-menu").onclick = ()=>{
+setInterval(()=>{
+kSlides[kIndex].classList.remove("active");
+kIndex = (kIndex + 1) % kSlides.length;
+kSlides[kIndex].classList.add("active");
+},5000);
+
+// MOBILE MENU
+document.querySelector(".mobile-menu").onclick = () => {
 document.querySelector(".navbar").classList.toggle("active");
 };
 
