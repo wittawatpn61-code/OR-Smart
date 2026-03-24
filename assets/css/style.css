@@ -206,26 +206,29 @@ KNOWLEDGE SLIDER (เหลืออันเดียว)
   opacity:1;
   width:18px;
 }
-/* ===== KNOWLEDGE SLIDER ===== */
-.knowledge-slider{
+/* ===== KNOWLEDGE (SMALL SINGLE SLIDER) ===== */
+.knowledge-slider.single{
 position:relative;
-max-width:220px;
-height:360px;
-margin:auto;
+width:180px;        /* เล็กลง */
+height:300px;       /* แนวตั้ง */
+margin:30px auto 0;
 overflow:hidden;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border-radius:14px;
+box-shadow:0 8px 20px rgba(0,0,0,0.12);
 }
 
-.knowledge-slider img{
+.knowledge-slider.single img{
 position:absolute;
+top:0;
+left:0;
 width:100%;
 height:100%;
 object-fit:cover;
 opacity:0;
-transition:opacity 1s ease;
+transition:opacity 1s ease-in-out;
 }
 
-.knowledge-slider img.active{
+.knowledge-slider.single img.active{
 opacity:1;
+z-index:2;
 }
