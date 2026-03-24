@@ -510,7 +510,7 @@ function showActivitySlide(){
 setInterval(showActivitySlide, 10000);
 </script>
 
-<!-- ===== KNOWLEDGE A4 SLIDER ขนาด A4 ===== -->
+<!-- ===== KNOWLEDGE A4 SLIDER (โชว์ 2 รูป/สไลด์) ===== -->
 <section class="knowledge-a4-slider">
   <div class="a4-paper">
 
@@ -520,12 +520,18 @@ setInterval(showActivitySlide, 10000);
     </h2>
 
     <div class="slider">
-      <img src="assets/img/01.jpg" class="active">
-      <img src="assets/img/02.jpg">
-      <img src="assets/img/03.jpg">
-      <img src="assets/img/04.jpg">
-      <img src="assets/img/S__42688523.jpg">
-      <img src="assets/img/06.jpg">
+      <div class="slide">
+        <img src="assets/img/01.jpg">
+        <img src="assets/img/02.jpg">
+      </div>
+      <div class="slide">
+        <img src="assets/img/03.jpg">
+        <img src="assets/img/04.jpg">
+      </div>
+      <div class="slide">
+        <img src="assets/img/S__42688523.jpg">
+        <img src="assets/img/06.jpg">
+      </div>
     </div>
 
   </div>
@@ -565,26 +571,34 @@ setInterval(showActivitySlide, 10000);
 .slider{
   position:relative;
   width:100%;
-  /* กรอบรูปภายใน slider 5:7 */
-  aspect-ratio:5 / 7;
   overflow:hidden;
-  border-radius:12px;
-  margin-top:30px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.slider img{
+.slide{
+  display:flex;
+  justify-content:space-between;
+  gap:12mm;
+  opacity:0;
   position:absolute;
   width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
   transition:opacity 1s ease;
-  cursor:pointer;
 }
 
-.slider img.active{
+.slide.active{
   opacity:1;
+}
+
+.slide img{
+  width:calc(50% - 6mm); /* แบ่ง 2 รูปต่อสไลด์ */
+  aspect-ratio:5/7;       /* กรอบ 5:7 */
+  object-fit:cover;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.slide img:hover{
+  transform:scale(1.03);
 }
 
 /* LIGHTBOX */
@@ -623,8 +637,8 @@ setInterval(showActivitySlide, 10000);
     min-height:255mm;
     padding:15mm;
   }
-  .slider{
-    aspect-ratio:5/7;
+  .slide img{
+    width:calc(50% - 6mm);
   }
 }
 
@@ -634,43 +648,47 @@ setInterval(showActivitySlide, 10000);
     min-height:210mm;
     padding:10mm;
   }
-  .slider{
-    aspect-ratio:5/7;
+  .slide img{
+    width:100%; /* มือถือโชว์ทีละรูป */
+    margin-bottom:12px;
   }
 }
 </style>
 
 <script>
 // ===== SLIDER LOGIC =====
-let knowledgeIndex = 0;
-const knowledgeSlides = document.querySelectorAll(".knowledge-a4-slider .slider img");
+let slideIndex = 0;
+const slides = document.querySelectorAll(".knowledge-a4-slider .slide");
 
-function showKnowledgeSlide(){
-  knowledgeSlides.forEach(img => img.classList.remove("active"));
-  knowledgeSlides[knowledgeIndex].classList.add("active");
-  knowledgeIndex = (knowledgeIndex + 1) % knowledgeSlides.length;
+function showSlide(){
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[slideIndex].classList.add("active");
+  slideIndex = (slideIndex + 1) % slides.length;
 }
 
 // สไลด์ทุก 6 วินาที
-setInterval(showKnowledgeSlide, 6000);
+showSlide(); // แสดงสไลด์แรกทันที
+setInterval(showSlide, 6000);
 
 // ===== LIGHTBOX LOGIC =====
-const knowledgeLightbox = document.getElementById("knowledge-lightbox");
-const knowledgeLightboxImg = document.getElementById("knowledge-lightbox-img");
-const knowledgeCloseBtn = knowledgeLightbox.querySelector(".close");
+const lightbox = document.getElementById("knowledge-lightbox");
+const lightboxImg = document.getElementById("knowledge-lightbox-img");
+const closeBtn = lightbox.querySelector(".close");
 
-knowledgeSlides.forEach(img => {
+// เปิด lightbox เมื่อคลิกรูป
+const slideImages = document.querySelectorAll(".knowledge-a4-slider .slide img");
+slideImages.forEach(img => {
   img.addEventListener("click", ()=>{
-    knowledgeLightbox.style.display = "flex";
-    knowledgeLightboxImg.src = img.src;
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
   });
 });
 
 // ปิด lightbox
-knowledgeCloseBtn.onclick = ()=> knowledgeLightbox.style.display = "none";
-knowledgeLightbox.onclick = (e)=>{
-  if(e.target === knowledgeLightbox){
-    knowledgeLightbox.style.display = "none";
+closeBtn.onclick = ()=> lightbox.style.display = "none";
+lightbox.onclick = (e)=>{
+  if(e.target === lightbox){
+    lightbox.style.display = "none";
   }
 };
 </script>
