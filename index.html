@@ -517,9 +517,7 @@ OR NURSE UPH
 <!-- =========================
 KNOWLEDGE (สาระน่ารู้)
 ========================= -->
-<!-- =========================
-KNOWLEDGE (สาระน่ารู้)
-========================= -->
+
 <section class="knowledge">
 
 <div class="container">
@@ -625,3 +623,29 @@ setInterval(showSlide,4000);
 </body>
 </html>
 ```
+<script>
+
+// ===== Knowledge Slider Single =====
+const kSlides = document.querySelectorAll(".k-slide");
+let kIndex = 0;
+
+function showKSlide(){
+
+kSlides.forEach(slide=>{
+slide.classList.remove("active");
+});
+
+kIndex++;
+
+if(kIndex >= kSlides.length){
+kIndex = 0;
+}
+
+kSlides[kIndex].classList.add("active");
+
+}
+
+// เปลี่ยนทุก 5 วินาที
+setInterval(showKSlide,5000);
+
+</script>
