@@ -322,12 +322,12 @@ OR NURSE UPH
     <div class="about-grid">
 
       <div class="about-box">
-        <p>
+        <p class="about-text">
           งานการพยาบาลห้องผ่าตัดโรงพยาบาลมหาวิทยาลัยพะเยา ให้บริการด้านการผ่าตัดทั่วไป MIS และการส่องกล้อง
           ดูแลผู้ป่วยครบทั้ง 3 ระยะ ก่อน ระหว่าง และหลังผ่าตัด
         </p>
 
-        <p>
+        <p class="about-text">
           ทีมพยาบาลเชี่ยวชาญด้าน ศัลยกรรมทั่วไป ทางเดินปัสสาวะ จักษุ หูคอจมูก กระดูก และทันตกรรม
         </p>
       </div>
@@ -342,21 +342,15 @@ OR NURSE UPH
 </section>
 
 <style>
-.about-box p{
-  font-size:1.25rem;      /* ขนาดตัวอักษรใหญ่ขึ้น */
-  line-height:1.8;        /* เว้นบรรทัดให้สบายตา */
-  color:#1f2933;          /* สีเข้ม อ่านง่าย */
-  margin-bottom:16px;     /* เว้นระยะระหว่างย่อหน้า */
+.about-box .about-text{
+  font-size:1.5rem;        /* ตัวหนังสือใหญ่ขึ้น */
+  line-height:1.6;         /* เว้นบรรทัดให้สบายตา */
+  max-width:650px;         /* จำกัดความกว้างให้พอดี ทำให้แสดงเป็น 2 บรรทัด */
+  margin-bottom:20px;      /* เว้นระยะระหว่างย่อหน้า */
+  color:#1f2933;           /* สีเข้ม อ่านง่าย */
 }
+</style> 
 
-/* สามารถปรับ .section-title ให้ใหญ่ขึ้นเล็กน้อย */
-.section-title{
-  font-size:32px;         /* เพิ่มขนาดหัวข้อ */
-  margin-bottom:40px;
-  color:#0f8a5f;
-  text-align:center;
-}
-</style>
 <!-- NEWS -->
 <section class="news">
 <div class="container">
