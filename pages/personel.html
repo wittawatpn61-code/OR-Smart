@@ -1,280 +1,705 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>บุคลากร | งานพยาบาลห้องผ่าตัด</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บุคลากร | งานพยาบาลห้องผ่าตัด</title>
+  <meta name="description" content="หน้าบุคลากรของงานพยาบาลผู้ป่วยนอก สำหรับเพิ่มรูปภาพและข้อมูลเจ้าหน้าที่ของหน่วยงาน" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8+q46cDfLr9P7k9RwhKkMHpvLbHG9SrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
+    /* =========================
+BASE
+========================= */
+
 :root{
+
 --primary:#0f8a5f;
 --primary-light:#e9f7f2;
 --text:#2b2b2b;
 --border:#e5e5e5;
+
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
+
 font-family:'Sarabun',sans-serif;
-background:#f7f9fb;
 color:var(--text);
+background:#f7f9fb;
+line-height:1.6;
+
 }
 
 .container{
+
 width:90%;
 max-width:1200px;
 margin:auto;
+
 }
 
-/* HEADER */
+/* =========================
+HEADER
+========================= */
+
 .site-header{
-background:#fff;
+
+background:white;
 border-bottom:1px solid var(--border);
+
 }
 
 .header-inner{
+
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 0;
+
+}
+
+.brand{
+
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+color:var(--primary);
+
+}
+
+.brand-mark{
+
+font-size:24px;
+
+}
+
+.brand-text strong{
+
+display:block;
+font-size:18px;
+
+}
+
+.brand-text small{
+
+font-size:12px;
+color:#777;
+
 }
 
 .site-nav ul{
+
 display:flex;
-gap:20px;
 list-style:none;
+gap:22px;
+
 }
 
 .site-nav a{
+
 text-decoration:none;
 color:#444;
+font-weight:500;
+transition:0.2s;
+
 }
 
-/* SECTION */
+.site-nav a:hover{
+
+color:var(--primary);
+
+}
+
+
+/* =========================
+SECTION
+========================= */
+
 .section{
-padding:70px 0;
+
+padding:80px 0;
+
 }
 
 .section-alt{
-background:#fff;
+
+background:#ffffff;
+
 }
 
 .section-heading{
+
 text-align:center;
 margin-bottom:40px;
+
 }
 
+.section-heading h1,
 .section-heading h2{
-font-size:30px;
+
+font-size:32px;
+margin:10px 0;
+
 }
 
-/* CARD */
+.section-kicker{
+
+color:var(--primary);
+font-size:13px;
+font-weight:600;
+letter-spacing:1px;
+
+}
+
+
+/* =========================
+LEADER CARD
+========================= */
+
+.leader-wrapper{
+
+display:flex;
+justify-content:center;
+
+}
+
 .person-card{
-background:#fff;
+
+background:white;
 border-radius:16px;
-padding:25px;
-text-align:center;
-box-shadow:0 8px 25px rgba(0,0,0,0.05);
-transition:0.3s;
+padding:28px;
+box-shadow:0 8px 30px rgba(0,0,0,0.05);
+transition:0.25s;
+
 }
 
 .person-card:hover{
+
 transform:translateY(-5px);
+box-shadow:0 12px 40px rgba(0,0,0,0.08);
+
 }
 
+.leader-card{
+
+max-width:420px;
+text-align:center;
+
+}
+
+/* =========================
+PERSON IMAGE
+========================= */
+
+.person-image-wrap{
+
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:18px;
+
+}
+
+/* รูปจริง */
+
 .person-photo{
+
 width:150px;
 height:150px;
 border-radius:50%;
 object-fit:cover;
-margin-bottom:15px;
+
+border:4px solid white;
+box-shadow:0 5px 18px rgba(0,0,0,0.15);
+
 }
+
+/* รูปหัวหน้าขนาดใหญ่ */
 
 .leader-photo{
+
 width:180px;
 height:180px;
+
 }
 
-/* GRID */
-.nurse-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:25px;
-}
+/* placeholder */
 
-.leader-wrapper{
+.placeholder-photo{
+
+background:var(--primary-light);
 display:flex;
+align-items:center;
 justify-content:center;
+font-size:50px;
+color:var(--primary);
+
+}
+
+/* =========================
+PERSON CONTENT
+========================= */
+
+.person-content{
+
+text-align:center;
+
+}
+
+.person-badge{
+
+display:inline-block;
+background:var(--primary-light);
+color:var(--primary);
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+margin-bottom:10px;
+
 }
 
 .person-role{
+
 color:#666;
+margin-bottom:14px;
+
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-.section{padding:50px 0;}
-.person-photo{width:130px;height:130px;}
-.leader-photo{width:150px;height:150px;}
+.person-contact{
+
+display:flex;
+flex-direction:column;
+gap:6px;
+
+}
+
+.person-contact a{
+
+text-decoration:none;
+color:#555;
+font-size:14px;
+
+}
+
+.person-contact i{
+
+margin-right:6px;
+color:var(--primary);
+
+}
+
+
+/* =========================
+GRID NURSE
+========================= */
+
+.nurse-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+
+}
+
+.nurse-card{
+
+text-align:center;
+
+}
+
+
+/* =========================
+GUIDE PANEL
+========================= */
+
+.soft-panel{
+
+background:#fafafa;
+padding:30px;
+border-radius:12px;
+border:1px solid var(--border);
+
+}
+
+pre{
+
+overflow:auto;
+font-size:14px;
+
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+.site-footer{
+
+background:#0f8a5f;
+color:white;
+margin-top:60px;
+
+}
+
+.footer-inner{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:30px 0;
+
+}
+
+.footer-links a{
+
+color:white;
+text-decoration:none;
+
+}
+
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+
+.header-inner{
+
+flex-direction:column;
+gap:15px;
+
+}
+
+.site-nav ul{
+
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+.section{
+
+padding:60px 0;
+
+}
+
+.person-photo{
+
+width:130px;
+height:130px;
+
+}
+
+.leader-photo{
+
+width:150px;
+height:150px;
+
+}
+
+.footer-inner{
+
+flex-direction:column;
+gap:10px;
+text-align:center;
+
+}
+
 }
 </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
 
-<header class="site-header">
-<div class="container header-inner">
-<h2>OR Nursing</h2>
+  <header class="site-header inner-page-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand" aria-label="กลับหน้าแรก">
+        <span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+        <span class="brand-text">
+          <strong>OR Nursing</strong>
+          <small>หน้าบุคลากร</small>
+        </span>
+      </a>
 
-<nav class="site-nav">
-<ul>
-<li><a href="#">หน้าแรก</a></li>
-<li><a href="#leader">หัวหน้า</a></li>
-<li><a href="#nurse">พยาบาล</a></li>
-</ul>
-</nav>
-</div>
-</header>
+      <nav class="site-nav open-static" aria-label="เมนูหน้าบุคลากร">
+        <ul>
+          <li><a href="../index.html">หน้าแรก</a></li>
+          <li><a href="#leader-section">หัวหน้าหน่วยงาน</a></li>
+          <li><a href="#nurse-section">บุคลากรพยาบาล</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<main>
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="section hero-mini personnel-hero">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">PERSONNEL PAGE</span>
+          <h1>บุคลากรงานพยาบาลห้องผ่าตัด</h1>
+          <p>
+            แสดงข้อมูลหัวหน้าหน่วยงานและบุคลากรในรูปแบบทันสมัย
+            โดยแยกส่วนหัวหน้าไว้ด้านบนตรงกลาง และบุคลากรท่านอื่นไว้ด้านล่างอย่างเป็นระเบียบ
+          </p>
+        </div>
+      </div>
+    </section>
 
-<!-- หัวหน้า -->
-<section class="section section-alt" id="leader">
+<!-- หัวหน้าหน่วยงาน -->
+<section class="section section-alt" id="leader-section">
 <div class="container">
 
 <div class="section-heading">
+<span class="section-kicker">HEAD OF UNIT</span>
 <h2>รักษาการแทนหัวหน้างาน</h2>
 </div>
 
 <div class="leader-wrapper">
-<div class="person-card">
-<img src="../assets/img/อัมภาพร.jpg" class="person-photo leader-photo">
+
+<article class="person-card leader-card">
+
+<div class="person-image-wrap">
+<img class="person-photo leader-photo"
+src="../assets/img/อัมภาพร.jpg"
+alt="พว.อัมภาพร ธิวงค์ษา"
+loading="lazy">
+</div>
+
+<div class="person-content">
+<span class="person-badge">รักษาการแทนหัวหน้างาน</span>
 <h3>พว.อัมภาพร ธิวงค์ษา</h3>
 <p class="person-role">รักษาการแทนหัวหน้างานการพยาบาลห้องผ่าตัด</p>
 </div>
-</div>
 
+</article>
+
+</div>
 </div>
 </section>
 
+
 <!-- พยาบาลวิชาชีพ -->
-<section class="section" id="nurse">
+<section class="section" id="nurse-section">
+
 <div class="container">
 
 <div class="section-heading">
+<span class="section-kicker">REGISTERED NURSE</span>
 <h2>พยาบาลวิชาชีพ</h2>
 </div>
 
 <div class="nurse-grid">
 
-<div class="person-card">
-<img src="../assets/img/สุจิตรา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/สุจิตรา.jpg"
+alt="พว.สุจิตรา ศรีเกษตรกุล"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>พว.สุจิตรา ศรีเกษตรกุล</h3>
 <p class="person-role">พยาบาลวิชาชีพ (ผู้ทรงคุณวุฒิ)</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/อัจฉรา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/อัจฉรา.jpg"
+alt="พว.อัจฉรา ฟูสีกุล"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>พว.อัจฉรา ฟูสีกุล</h3>
 <p class="person-role">พยาบาลวิชาชีพ</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/อัครกัลยา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/อัครกัลยา.jpg"
+alt="พว.อัครกัลยา สมคำ"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>พว.อัครกัลยา สมคำ</h3>
 <p class="person-role">พยาบาลวิชาชีพ</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/อริสรา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/อริสรา.jpg"
+alt="พว.อริสรา ช่อลำเจียก"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>พว.อริสรา ช่อลำเจียก</h3>
 <p class="person-role">พยาบาลวิชาชีพ</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/ณัฐนิชา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/ณัฐนิชา.jpg"
+alt="พว.ณัฐนิชา เตชะกุลวิโรจน์"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>พว.ณัฐนิชา เตชะกุลวิโรจน์</h3>
 <p class="person-role">พยาบาลวิชาชีพ</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/ลลิตา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/ลลิตา.jpg"
+alt="พว.ลลิตา วาตานาเบ"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>พว.ลลิตา วาตานาเบ</h3>
 <p class="person-role">พยาบาลวิชาชีพ</p>
 </div>
+</article>
 
 </div>
 </div>
 </section>
 
+
 <!-- ผู้ช่วยพยาบาล -->
 <section class="section section-alt">
+
 <div class="container">
 
 <div class="section-heading">
+<span class="section-kicker">PRACTICAL NURSE</span>
 <h2>ผู้ช่วยพยาบาล</h2>
 </div>
 
 <div class="nurse-grid">
 
-<div class="person-card">
-<img src="../assets/img/ณัฐฐาพร.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/ณัฐฐาพร.jpg"
+alt="ณัฐฐาพร เลิศพา"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นางสาวณัฐฐาพร เลิศพา</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/วิทวัตร.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/วิทวัตร.jpg"
+alt="วิทวัตร สงเสิด"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นายวิทวัตร สงเสิด</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/วรัญญู.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/วรัญญู.jpg"
+alt="วรัญญู มหาวัน"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นายวรัญญู มหาวัน</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/วีรวรรณ.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/วีรวรรณ.jpg"
+alt="วีรวรรณ บ้านสระ"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นางสาววีรวรรณ บ้านสระ</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/จุฑาทิพย์.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/จุฑาทิพย์.jpg"
+alt="จุฑาทิพย์ ไชยลังกา"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นางสาวจุฑาทิพย์ ไชยลังกา</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/กฤตเมธ.png" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/กฤตเมธ.png"
+alt="กฤตเมธ สินธุพงษ์"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นายกฤตเมธ สินธุพงษ์</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/พัชราภา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/พัชราภา.jpg"
+alt="พัชราภา ตะนัง"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นางสาวพัชราภา ตะนัง</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
-<div class="person-card">
-<img src="../assets/img/วรัญญา.jpg" class="person-photo">
+<article class="person-card nurse-card">
+<div class="person-image-wrap">
+<img class="person-photo nurse-photo"
+src="../assets/img/วรัญญา.jpg"
+alt="วรัญญา ชุ่มสา"
+loading="lazy">
+</div>
+<div class="person-content">
 <h3>นางสาววรัญญา ชุ่มสา</h3>
 <p class="person-role">ผู้ช่วยพยาบาล</p>
 </div>
+</article>
 
 </div>
 </div>
 </section>
-
-</main>
-
-</body>
-</html>
