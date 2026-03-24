@@ -550,7 +550,7 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- DOCTOR SCHEDULE (2 แถวแนวตั้ง + LIGHTBOX) -->
+<!-- DOCTOR SCHEDULE (2 แถวแนวตั้ง + LIGHTBOX, ไม่มีชื่อแพทย์) -->
 <section class="schedule-grid">
   <div class="container">
     <h2 class="section-title">
@@ -587,9 +587,7 @@ lightbox.onclick = (e)=>{
   background:#f0f0f0;
   padding:30px 0;
 }
-.container{
-  width:95%;
-}
+.container{width:95%; margin:auto;}
 .section-title{
   text-align:center;
   color:#0f8a5f;
@@ -597,11 +595,11 @@ lightbox.onclick = (e)=>{
   font-size:28px;
 }
 
-/* 2 แถวแนวตั้ง */
+/* Grid 2 แถวแนวตั้ง */
 .grid-vertical{
   display:grid;
-  grid-template-columns:repeat(6,1fr); /* 6 คอลัมน์ */
-  grid-template-rows:repeat(2,250px); /* 2 แถวสูง 250px */
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:repeat(2,250px);
   gap:12px;
 }
 .grid-vertical img{
@@ -612,9 +610,7 @@ lightbox.onclick = (e)=>{
   cursor:pointer;
   transition:0.3s;
 }
-.grid-vertical img:hover{
-  transform:scale(1.03);
-}
+.grid-vertical img:hover{transform:scale(1.03);}
 
 /* LIGHTBOX */
 .lightbox{
@@ -651,14 +647,13 @@ lightbox.onclick = (e)=>{
   cursor:pointer;
   padding:10px;
 }
-.prev{left:20px;}
-.next{right:20px;}
+.prev{left:20px;} .next{right:20px;}
 
 /* Responsive */
-@media(max-width:1200px){ .grid-vertical{grid-template-columns:repeat(4,1fr);} }
-@media(max-width:900px){ .grid-vertical{grid-template-columns:repeat(3,1fr);} }
-@media(max-width:600px){ .grid-vertical{grid-template-columns:repeat(2,1fr); grid-template-rows:auto;} }
-@media(max-width:400px){ .grid-vertical{grid-template-columns:1fr; grid-template-rows:auto;} }
+@media(max-width:1200px){.grid-vertical{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:900px){.grid-vertical{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.grid-vertical{grid-template-columns:repeat(2,1fr); grid-template-rows:auto;}}
+@media(max-width:400px){.grid-vertical{grid-template-columns:1fr; grid-template-rows:auto;}}
 </style>
 
 <script>
@@ -672,47 +667,34 @@ const prevBtn = document.querySelector(".prev");
 let currentIndex = 0;
 
 // เปิด Lightbox
-images.forEach((img, index)=>{
+images.forEach((img,index)=>{
   img.addEventListener("click", ()=>{
-    currentIndex = index;
-    showImage();
-    lightbox.style.display = "flex";
+    currentIndex=index;
+    lightboxImg.src = img.src;
+    lightbox.style.display="flex";
   });
 });
 
-// แสดงรูปใน Lightbox
-function showImage(){
-  lightboxImg.src = images[currentIndex].src;
-}
-
 // ปุ่มถัดไป
 nextBtn.onclick = ()=>{
-  currentIndex = (currentIndex + 1) % images.length;
-  showImage();
+  currentIndex=(currentIndex+1)%images.length;
+  lightboxImg.src = images[currentIndex].src;
 };
-
 // ปุ่มก่อนหน้า
 prevBtn.onclick = ()=>{
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  showImage();
+  currentIndex=(currentIndex-1+images.length)%images.length;
+  lightboxImg.src = images[currentIndex].src;
 };
-
 // ปิด Lightbox
-closeBtn.onclick = ()=> lightbox.style.display = "none";
-
+closeBtn.onclick = ()=>lightbox.style.display="none";
 // คลิกพื้นหลังปิด
-lightbox.onclick = (e)=>{
-  if(e.target === lightbox){
-    lightbox.style.display = "none";
-  }
-};
-
+lightbox.onclick = (e)=>{if(e.target===lightbox) lightbox.style.display="none";}
 // Keyboard navigation
-document.addEventListener("keydown", (e)=>{
-  if(lightbox.style.display === "flex"){
-    if(e.key === "ArrowRight") nextBtn.click();
-    if(e.key === "ArrowLeft") prevBtn.click();
-    if(e.key === "Escape") closeBtn.click();
+document.addEventListener("keydown",(e)=>{
+  if(lightbox.style.display==="flex"){
+    if(e.key==="ArrowRight") nextBtn.click();
+    if(e.key==="ArrowLeft") prevBtn.click();
+    if(e.key==="Escape") closeBtn.click();
   }
 });
 </script>
