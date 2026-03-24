@@ -34,32 +34,32 @@ padding:0;
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImg">
 </div>
+<!-- =========================
+PRO IMAGE VIEWER
+========================= -->
+<div id="viewer" class="viewer">
+
+<button class="viewer-close">&times;</button>
+
+<button class="viewer-prev">
+<i class="fa-solid fa-chevron-left"></i>
+</button>
+
+<img id="viewer-img" class="viewer-img">
+
+<button class="viewer-next">
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+
+<div class="viewer-caption">
+<h3 id="viewer-name"></h3>
+<p id="viewer-role"></p>
+</div>
+
+</div>
 
 body{
 
-  <script>
-
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImg");
-const images = document.querySelectorAll(".person-photo");
-const closeBtn = document.querySelector(".close");
-
-images.forEach(img => {
-  img.addEventListener("click", function(){
-    modal.style.display = "flex";
-    modalImg.src = this.src;
-  });
-});
-
-closeBtn.onclick = function(){
-  modal.style.display = "none";
-}
-
-modal.onclick = function(e){
-  if(e.target === modal){
-    modal.style.display = "none";
-  }
-}
 
 </script>
 
