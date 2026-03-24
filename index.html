@@ -510,7 +510,7 @@ function showActivitySlide(){
 setInterval(showActivitySlide, 10000);
 </script>
 
-<!-- ===== KNOWLEDGE A4 SLIDER 6 รูป สไลด์ทุก 6 วินาที + กรอบ 5:7 ===== -->
+<!-- ===== KNOWLEDGE A4 SLIDER ขนาด A4 ===== -->
 <section class="knowledge-a4-slider">
   <div class="a4-paper">
 
@@ -538,18 +538,42 @@ setInterval(showActivitySlide, 10000);
 </div>
 
 <style>
-/* ===== SLIDER ===== */
-.knowledge-a4-slider .slider{
+/* ===== A4 PAPER ===== */
+.knowledge-a4-slider{
+  display:flex;
+  justify-content:center;
+  background:#f0f0f0;
+  padding:40px 0;
+}
+
+.a4-paper{
+  width:210mm;      /* A4 width */
+  min-height:297mm; /* A4 height */
+  background:white;
+  padding:20mm;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+.title{
+  text-align:center;
+  margin-bottom:20px;
+  color:#0f8a5f;
+}
+
+/* SLIDER */
+.slider{
   position:relative;
   width:100%;
-  aspect-ratio:5 / 7; /* กรอบ 5:7 */
+  /* กรอบรูปภายใน slider 5:7 */
+  aspect-ratio:5 / 7;
   overflow:hidden;
   border-radius:12px;
   margin-top:30px;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.knowledge-a4-slider .slider img{
+.slider img{
   position:absolute;
   width:100%;
   height:100%;
@@ -559,7 +583,7 @@ setInterval(showActivitySlide, 10000);
   cursor:pointer;
 }
 
-.knowledge-a4-slider .slider img.active{
+.slider img.active{
   opacity:1;
 }
 
@@ -594,14 +618,24 @@ setInterval(showActivitySlide, 10000);
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .knowledge-a4-slider .slider{
-    aspect-ratio:5 / 7;
+  .a4-paper{
+    width:180mm;
+    min-height:255mm;
+    padding:15mm;
+  }
+  .slider{
+    aspect-ratio:5/7;
   }
 }
 
 @media(max-width:480px){
-  .knowledge-a4-slider .slider{
-    aspect-ratio:5 / 7;
+  .a4-paper{
+    width:150mm;
+    min-height:210mm;
+    padding:10mm;
+  }
+  .slider{
+    aspect-ratio:5/7;
   }
 }
 </style>
