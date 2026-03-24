@@ -625,67 +625,7 @@ setInterval(showSlide,4000);
 ```
 <script>
 
-// ===== Knowledge Slider Single =====
-const kSlides = document.querySelectorAll(".k-slide");
-let kIndex = 0;
 
-function showKSlide(){
-
-kSlides.forEach(slide=>{
-slide.classList.remove("active");
-});
-
-kIndex++;
-
-if(kIndex >= kSlides.length){
-kIndex = 0;
-}
-
-kSlides[kIndex].classList.add("active");
-
-}
-
-// เปลี่ยนทุก 5 วินาที
-setInterval(showKSlide,5000);
-
-</script>
-<!-- =========================
-KNOWLEDGE (IMAGE SLIDER ONLY)
-========================= -->
-
-<section class="knowledge">
-
-<div class="container">
-
-<h2 class="section-title">
-<i class="fa-solid fa-lightbulb"></i>
-สาระน่ารู้
-</h2>
-
-<div class="knowledge-wrapper">
-
-<div class="knowledge-slider" id="kSlider">
-
-<img src="assets/img/01.jpg" class="k-slide active">
-<img src="assets/img/02.jpg" class="k-slide">
-<img src="assets/img/03.jpg" class="k-slide">
-<img src="assets/img/S__42688523.jpg" class="k-slide">
-<img src="assets/img/06.jpg" class="k-slide">
-
-<!-- BUTTON -->
-<button class="k-btn k-prev"><i class="fa-solid fa-chevron-left"></i></button>
-<button class="k-btn k-next"><i class="fa-solid fa-chevron-right"></i></button>
-
-<!-- DOT -->
-<div class="k-dots" id="kDots"></div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 <script>
 
 const slides = document.querySelectorAll(".k-slide");
