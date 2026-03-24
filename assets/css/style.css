@@ -1430,3 +1430,55 @@ showImage(currentIndex - 1);
 });
 
 </script>
+/* =========================
+KNOWLEDGE SECTION
+========================= */
+
+.knowledge{
+background:#ffffff;
+}
+
+.knowledge-wrapper{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.knowledge-slider{
+position:relative;
+height:320px;
+border-radius:14px;
+overflow:hidden;
+}
+
+.k-slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease;
+}
+
+.k-slide.active{
+opacity:1;
+}
+
+.knowledge-content h3{
+font-size:24px;
+margin-bottom:12px;
+color:var(--primary);
+}
+
+.knowledge-content p{
+font-size:16px;
+line-height:1.7;
+}
+
+/* Responsive */
+@media(max-width:768px){
+.knowledge-wrapper{
+grid-template-columns:1fr;
+}
+}
