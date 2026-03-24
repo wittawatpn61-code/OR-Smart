@@ -550,7 +550,7 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- DOCTOR SCHEDULE (2 แถว + LIGHTBOX, ไม่มีชื่อแพทย์) -->
+<!-- DOCTOR SCHEDULE (2 แถวแนวตั้ง + LIGHTBOX, ไม่มีชื่อแพทย์) -->
 <section class="schedule-grid">
   <div class="container">
     <h2 class="section-title">
@@ -574,7 +574,7 @@ lightbox.onclick = (e)=>{
   </div>
 </section>
 
-<!-- ===== LIGHTBOX ===== -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="close">&times;</span>
   <button class="nav prev">&#10094;</button>
@@ -652,7 +652,8 @@ lightbox.onclick = (e)=>{
   cursor:pointer;
   padding:10px;
 }
-.prev{left:20px;} .next{right:20px;}
+.prev{left:20px;}
+.next{right:20px;}
 
 /* Responsive */
 @media(max-width:1200px){.grid-vertical{grid-template-columns:repeat(4,1fr);}}
