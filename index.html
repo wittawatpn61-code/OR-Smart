@@ -550,60 +550,172 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- DOCTOR SCHEDULE (SLIDER) -->
-<section class="schedule">
-<div class="container">
+<!-- ===== DOCTOR SCHEDULE A4 LANDSCAPE ===== -->
+<section class="schedule-a4">
+  <div class="a4-landscape">
 
-<h2 class="section-title">
-<i class="fa-solid fa-user-doctor"></i>
-ตารางแพทย์ออกตรวจ
-</h2>
+    <h2 class="title">
+      <i class="fa-solid fa-user-doctor"></i>
+      ตารางแพทย์ออกตรวจ
+    </h2>
 
-<div class="schedule-slider">
+    <div class="grid">
 
-<button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
+      <img src="assets/img/Uro.jpg">
+      <img src="assets/img/Med1.jpg">
+      <img src="assets/img/Med.jpg">
+      <img src="assets/img/Ortho.jpg">
+      <img src="assets/img/EYE.jpg">
+      <img src="assets/img/ENT.jpg">
+      <img src="assets/img/สูติ.jpg">
+      <img src="assets/img/กุมาร.jpg">
+      <img src="assets/img/ผิวหนัง.jpg">
+      <img src="assets/img/เวสศาส.jpg">
+      <img src="assets/img/รังสี.jpg">
 
-<div class="slider-track">
+    </div>
 
-<img src="assets/img/Uro.jpg" class="active">
-<img src="assets/img/Med1.jpg">
-<img src="assets/img/Med.jpg">
-<img src="assets/img/Ortho.jpg">
-<img src="assets/img/EYE.jpg">
-<img src="assets/img/ENT.jpg">
-<img src="assets/img/สูติ.jpg">
-<img src="assets/img/กุมาร.jpg">
-<img src="assets/img/ผิวหนัง.jpg">
-<img src="assets/img/เวสศาส.jpg">
-<img src="assets/img/รังสี.jpg">
-
-</div>
-
-<button class="next"><i class="fa-solid fa-chevron-right"></i></button>
-
-</div>
-
-</div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-<div class="container">
-<p>
-© 2026 งานการพยาบาลห้องผ่าตัด โรงพยาบาลมหาวิทยาลัยพะเยา
-</p>
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
 </div>
-</footer>
 
-<!-- SLIDER SCRIPT -->
+<style>
+
+/* ===== A4 LANDSCAPE ===== */
+.schedule-a4{
+  display:flex;
+  justify-content:center;
+  background:#f0f0f0;
+  padding:40px 0;
+}
+
+.a4-landscape{
+  width:297mm;
+  min-height:210mm;
+  background:white;
+  padding:15mm;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  box-sizing:border-box;
+}
+
+/* TITLE */
+.title{
+  text-align:center;
+  margin-bottom:15px;
+  color:#0f8a5f;
+}
+
+/* ===== GRID 11 ช่อง ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:8mm;
+}
+
+/* รูป */
+.grid img{
+  width:100%;
+  height:45mm;
+  object-fit:cover;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.grid img:hover{
+  transform:scale(1.03);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
+
+.lightbox .close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+}
+
+/* ===== PRINT ===== */
+@media print{
+  body{background:white;}
+  .schedule-a4{padding:0;}
+  .a4-landscape{
+    width:297mm;
+    height:210mm;
+    box-shadow:none;
+  }
+  .lightbox{display:none;}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:768px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:480px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+
 <script>
-let slides = document.querySelectorAll(".hero-slider img");
-let index = 0;
 
-setInterval(()=>{
-slides[index].classList.remove("active");
-index = (index + 1) % slides.length;
-slides[index].classList.add("active");
-},5000);
-</script> 
+// ===== LIGHTBOX =====
+const imgs = document.querySelectorAll(".grid img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".close");
+
+imgs.forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+closeBtn.onclick = ()=> lightbox.style.display = "none";
+
+lightbox.onclick = (e)=>{
+  if(e.target === lightbox){
+    lightbox.style.display = "none";
+  }
+};
+
+</script>
 
