@@ -323,7 +323,7 @@ OR NURSE UPH
 
       <div class="about-box">
         <p class="about-text">
-          งานการพยาบาลห้องผ่าตัดโรงพยาบาลมหาวิทยาลัยพะเยา ให้บริการด้านการผ่าตัดทั่วไป MIS และการส่องกล้อง
+          งานการพยาบาลห้องผ่าตัดโรงพยาบาลมหาวิทยาลัยพะเยา ให้บริการด้านการผ่าตัดทั่วไป MIS และการส่องกล้อง<br>
           ดูแลผู้ป่วยครบทั้ง 3 ระยะ ก่อน ระหว่าง และหลังผ่าตัด
         </p>
 
@@ -342,14 +342,41 @@ OR NURSE UPH
 </section>
 
 <style>
+/* ABOUT SECTION */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:40px;
+  align-items:center;
+}
+
+.about-icon{
+  font-size:120px;
+  color:#0f8a5f;
+  text-align:center;
+}
+
 .about-box .about-text{
-  font-size:1.5rem;        /* ตัวหนังสือใหญ่ขึ้น */
+  font-size:1.5rem;        /* ตัวหนังสือใหญ่ อ่านง่าย */
   line-height:1.6;         /* เว้นบรรทัดให้สบายตา */
   max-width:650px;         /* จำกัดความกว้างให้พอดี ทำให้แสดงเป็น 2 บรรทัด */
   margin-bottom:20px;      /* เว้นระยะระหว่างย่อหน้า */
-  color:#1f2933;           /* สีเข้ม อ่านง่าย */
+  color:#1f2933;
 }
-</style> 
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+  .about-icon{
+    display:none;
+  }
+  .about-box .about-text{
+    font-size:1.3rem;     /* ปรับขนาดให้มือถืออ่านง่าย */
+  }
+}
+</style>
 
 <!-- NEWS -->
 <section class="news">
