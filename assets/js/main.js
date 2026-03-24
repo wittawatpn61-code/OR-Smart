@@ -160,3 +160,86 @@ startAuto();
 
 });
 </script>
+<script>
+
+const slides = document.querySelectorAll("#heroSlider .slide");
+const dotsContainer = document.getElementById("heroDots");
+
+let index = 0;
+let interval;
+
+/* create dots */
+slides.forEach((_,i)=>{
+const d = document.createElement("div");
+d.classList.add("dot");
+if(i===0) d.classList.add("active");
+
+d.onclick=()=>{
+index=i;
+show();
+reset();
+};
+
+dotsContainer.appendChild(d);
+});
+
+const dots = document.querySelectorAll(".dot");
+
+/* show */
+function show(){
+slides.forEach(s=>s.classList.remove("active"));
+dots.forEach(d=>d.classList.remove("active"));
+
+slides[index].classList.add("active");
+dots[index].classList.add("active");
+}
+
+/* next/prev */
+function next(){
+index=(index+1)%slides.length;
+show();
+}
+
+function prev(){
+index=(index-1+slides.length)%slides.length;
+show();
+}
+
+/* auto */
+function start(){
+interval=setInterval(next,5000);
+}
+function reset(){
+clearInterval(interval);
+start();
+}
+
+/* events */
+document.querySelector(".next").onclick=()=>{next();reset();};
+document.querySelector(".prev").onclick=()=>{prev();reset();};
+
+/* pause hover */
+const slider=document.getElementById("heroSlider");
+slider.onmouseenter=()=>clearInterval(interval);
+slider.onmouseleave=start;
+
+/* swipe mobile */
+let startX=0;
+
+slider.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend",e=>{
+let end=e.changedTouches[0].clientX;
+
+if(startX-end>50) next();
+if(end-startX>50) prev();
+
+reset();
+});
+
+/* start */
+start();
+
+</script>
