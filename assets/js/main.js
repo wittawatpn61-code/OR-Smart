@@ -254,28 +254,29 @@ setInterval(()=>{
 
 <script>
 const slides = document.querySelectorAll(".slider-track img");
-let index = 0;
+let currentIndex = 0;
 
-function showSlide(i){
-slides.forEach(img => img.classList.remove("active"));
-slides[i].classList.add("active");
+// ฟังก์ชันแสดงภาพ
+function showSlide(index){
+slides.forEach(slide => slide.classList.remove("active"));
+slides[index].classList.add("active");
 }
 
-// auto slide ทุก 5 วิ
-setInterval(()=>{
-index = (index + 1) % slides.length;
-showSlide(index);
-},5000);
+// auto slide ทุก 5 วินาที
+setInterval(() => {
+currentIndex = (currentIndex + 1) % slides.length;
+showSlide(currentIndex);
+}, 5000);
 
-// next
-document.querySelector(".next").onclick = () => {
-index = (index + 1) % slides.length;
-showSlide(index);
-};
+// ปุ่ม next
+document.querySelector(".next").addEventListener("click", () => {
+currentIndex = (currentIndex + 1) % slides.length;
+showSlide(currentIndex);
+});
 
-// prev
-document.querySelector(".prev").onclick = () => {
-index = (index - 1 + slides.length) % slides.length;
-showSlide(index);
-};
+// ปุ่ม prev
+document.querySelector(".prev").addEventListener("click", () => {
+currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+showSlide(currentIndex);
+});
 </script>
