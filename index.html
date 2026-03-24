@@ -649,3 +649,110 @@ kSlides[kIndex].classList.add("active");
 setInterval(showKSlide,5000);
 
 </script>
+<!-- =========================
+KNOWLEDGE (IMAGE SLIDER ONLY)
+========================= -->
+
+<section class="knowledge">
+
+<div class="container">
+
+<h2 class="section-title">
+<i class="fa-solid fa-lightbulb"></i>
+สาระน่ารู้
+</h2>
+
+<div class="knowledge-wrapper">
+
+<div class="knowledge-slider" id="kSlider">
+
+<img src="assets/img/01.jpg" class="k-slide active">
+<img src="assets/img/02.jpg" class="k-slide">
+<img src="assets/img/03.jpg" class="k-slide">
+<img src="assets/img/S__42688523.jpg" class="k-slide">
+<img src="assets/img/06.jpg" class="k-slide">
+
+<!-- BUTTON -->
+<button class="k-btn k-prev"><i class="fa-solid fa-chevron-left"></i></button>
+<button class="k-btn k-next"><i class="fa-solid fa-chevron-right"></i></button>
+
+<!-- DOT -->
+<div class="k-dots" id="kDots"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<script>
+
+const slides = document.querySelectorAll(".k-slide");
+const dotsContainer = document.getElementById("kDots");
+
+let index = 0;
+let interval;
+
+/* CREATE DOT */
+slides.forEach((_,i)=>{
+const dot = document.createElement("div");
+dot.classList.add("k-dot");
+if(i===0) dot.classList.add("active");
+
+dot.addEventListener("click",()=>{
+index=i;
+showSlide();
+});
+
+dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll(".k-dot");
+
+/* SHOW */
+function showSlide(){
+
+slides.forEach(s=>s.classList.remove("active"));
+dots.forEach(d=>d.classList.remove("active"));
+
+slides[index].classList.add("active");
+dots[index].classList.add("active");
+
+}
+
+/* NEXT */
+function next(){
+index++;
+if(index>=slides.length) index=0;
+showSlide();
+}
+
+/* PREV */
+function prev(){
+index--;
+if(index<0) index=slides.length-1;
+showSlide();
+}
+
+/* AUTO */
+function startAuto(){
+interval = setInterval(next,5000);
+}
+
+function stopAuto(){
+clearInterval(interval);
+}
+
+/* EVENTS */
+document.querySelector(".k-next").onclick = next;
+document.querySelector(".k-prev").onclick = prev;
+
+const slider = document.getElementById("kSlider");
+slider.addEventListener("mouseenter",stopAuto);
+slider.addEventListener("mouseleave",startAuto);
+
+/* START */
+startAuto();
+
+</script>
