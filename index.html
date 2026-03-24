@@ -550,28 +550,28 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- ===== DOCTOR SCHEDULE A4 WITH LIGHTBOX ===== -->
+<!-- ===== DOCTOR SCHEDULE (GRID + LIGHTBOX) ===== -->
 <section class="schedule-a4">
-  <div class="a4-landscape">
+  <div class="container">
 
-    <h2 class="title">
+    <h2 class="section-title">
       <i class="fa-solid fa-user-doctor"></i>
       ตารางแพทย์ออกตรวจ
     </h2>
 
     <div class="grid">
 
-      <img src="assets/img/Uro.jpg">
-      <img src="assets/img/Med1.jpg">
-      <img src="assets/img/Med.jpg">
-      <img src="assets/img/Ortho.jpg">
-      <img src="assets/img/EYE.jpg">
-      <img src="assets/img/ENT.jpg">
-      <img src="assets/img/สูติ.jpg">
-      <img src="assets/img/กุมาร.jpg">
-      <img src="assets/img/ผิวหนัง.jpg">
-      <img src="assets/img/เวสศาส.jpg">
-      <img src="assets/img/รังสี.jpg">
+      <img src="assets/img/Uro.jpg" alt="Urology">
+      <img src="assets/img/Med1.jpg" alt="Medicine1">
+      <img src="assets/img/Med.jpg" alt="Medicine2">
+      <img src="assets/img/Ortho.jpg" alt="Orthopedics">
+      <img src="assets/img/EYE.jpg" alt="Eye">
+      <img src="assets/img/ENT.jpg" alt="ENT">
+      <img src="assets/img/สูติ.jpg" alt="Obstetrics">
+      <img src="assets/img/กุมาร.jpg" alt="Pediatrics">
+      <img src="assets/img/ผิวหนัง.jpg" alt="Dermatology">
+      <img src="assets/img/เวสศาส.jpg" alt="Vascular">
+      <img src="assets/img/รังสี.jpg" alt="Radiology">
 
     </div>
 
@@ -591,35 +591,31 @@ lightbox.onclick = (e)=>{
   display:flex;
   justify-content:center;
   background:#f0f0f0;
-  padding:40px 0;
+  padding:30px 0;
 }
 
-.a4-landscape{
-  width:297mm;
-  min-height:210mm;
-  background:white;
-  padding:15mm;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  box-sizing:border-box;
+.container{
+  width:95%;
 }
 
-.title{
+.section-title{
   text-align:center;
-  margin-bottom:15px;
   color:#0f8a5f;
+  margin-bottom:20px;
+  font-size:28px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:8mm;
+  gap:12px;
 }
 
 .grid img{
   width:100%;
-  height:45mm;
+  height:150px;
   object-fit:cover;
-  border-radius:8px;
+  border-radius:6px;
   cursor:pointer;
   transition:0.3s;
 }
@@ -669,11 +665,6 @@ lightbox.onclick = (e)=>{
 
 .prev{left:20px;}
 .next{right:20px;}
-
-@media print{
-  .lightbox{display:none;}
-  .a4-landscape{box-shadow:none;}
-}
 
 @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr);} }
 @media(max-width:768px){ .grid{grid-template-columns:repeat(2,1fr);} }
@@ -735,5 +726,3 @@ document.addEventListener("keydown", (e)=>{
   }
 });
 </script>
-
-
