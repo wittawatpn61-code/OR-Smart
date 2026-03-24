@@ -492,71 +492,19 @@ setInterval(showHeroSlide, 6000);
 <p>แนวทาง</p>
 </a>
 
-<!-- DOCUMENTS: แผ่นพับ LIGHTBOX -->
-<section class="documents">
-  <div class="container">
+<a href="documents/Pink Flat Mental Health Brochure.pdf" class="doc-card" target="_blank">
+<i class="fa-solid fa-file"></i>
+<a href="documents/คำแนะนำผู้ป่วยที่ได้รับการผ่าตัดTKA.pdf" class="doc-card" target="_blank">
+<i class="fa-solid fa-file"></i>
+<a href="documents/การปฎิบัติตัวสำหรับผู้ป่วยที่ได้รับการผ่าตัดเปลี่ยนข้อสะโพกเทียม.pdf" class="doc-card" target="_blank">
+<i class="fa-solid fa-file"></i>
+<p>แผ่นพับ</p>
+</a>
 
-    <h2 class="section-title">แผ่นพับ</h2>
-
-    <!-- ไอคอนแผ่นพับเดียว -->
-    <div class="doc-card" id="brochure-card">
-      <i class="fa-solid fa-file-pdf"></i>
-      <p>คลิกเพื่อดูแผ่นพับทั้งหมด</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- OTHER SECTIONS เหมือนเดิม -->
-
-<!-- DOCUMENTS: แผ่นพับ LIGHTBOX -->
-<section class="documents">
-  <div class="container">
-
-    <h2 class="section-title">แผ่นพับ</h2>
-
-    <!-- ไอคอนแผ่นพับเดียว -->
-    <div class="doc-card" id="brochure-card">
-      <i class="fa-solid fa-file-pdf"></i>
-      <p>คลิกเพื่อดูแผ่นพับทั้งหมด</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- LIGHTBOX สำหรับแผ่นพับ -->
-<div class="lightbox" id="brochure-lightbox">
-  <span class="close">&times;</span>
-  <div class="lightbox-content">
-    <h3>แผ่นพับ</h3>
-    <ul id="brochure-list">
-      <li><a href="documents/Pink Flat Mental Health Brochure.pdf" target="_blank">Pink Flat Mental Health Brochure</a></li>
-      <li><a href="documents/คำแนะนำผู้ป่วยที่ได้รับการผ่าตัดTKA.pdf" target="_blank">คำแนะนำผู้ป่วยที่ได้รับการผ่าตัด TKA</a></li>
-      <li><a href="documents/การปฎิบัติตัวสำหรับผู้ป่วยที่ได้รับการผ่าตัดเปลี่ยนข้อสะโพกเทียม.pdf" target="_blank">การปฏิบัติตัวสำหรับผู้ป่วยที่ได้รับการผ่าตัดเปลี่ยนข้อสะโพกเทียม</a></li>
-    </ul>
-  </div>
 </div>
 
-<!-- SCRIPT LIGHTBOX -->
-<script>
-const brochureCard = document.getElementById("brochure-card");
-const brochureLightbox = document.getElementById("brochure-lightbox");
-const brochureClose = brochureLightbox.querySelector(".close");
-
-brochureCard.addEventListener("click", ()=>{
-  brochureLightbox.style.display = "flex";
-});
-
-brochureClose.onclick = ()=>{
-  brochureLightbox.style.display = "none";
-};
-
-brochureLightbox.onclick = (e)=>{
-  if(e.target === brochureLightbox){
-    brochureLightbox.style.display = "none";
-  }
-};
-</script>
+</div>
+</section>
 
 <!-- ACTIVITIES SLIDER 4:3 -->
 <section class="activities">
