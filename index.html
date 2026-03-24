@@ -288,31 +288,96 @@ OR NURSE UPH
 <!-- HERO -->
 <section class="hero">
 
-<div class="hero-slider">
-<img src="assets/img/banner1.jpg" class="active">
-<img src="assets/img/47467339-9385-498E-9FA0-7BF262614921_L0_001-29_1_2568 16_39_06.jpg 16_39_06.jpg">
-<img src="assets/img/IMG_1624.jpg">
-</div>
+  <div class="hero-slider">
+    <img src="assets/img/banner1.jpg" class="active">
+    <img src="assets/img/47467339-9385-498E-9FA0-7BF262614921_L0_001-29_1_2568 16_39_06.jpg">
+    <img src="assets/img/IMG_1624.jpg">
+  </div>
 
-<div class="hero-overlay">
-<div class="container hero-content">
-
-<h1>งานการพยาบาลห้องผ่าตัด</h1>
-
-<p>
-โรงพยาบาลมหาวิทยาลัยพะเยา  
-บริการพยาบาลห้องผ่าตัดที่ได้มาตรฐาน ผ่าตัดถูกคน ผ่าตัดถูกข้าง ผ่าตัดถูกตำแหน่ง ปลอดภัย และทันสมัย
-</p>
-
-<a href="#" class="btn-primary">
-<i class="fa-solid fa-circle-info"></i>
-ดูข้อมูลเพิ่มเติม
-</a>
-
-</div>
-</div>
+  <div class="hero-overlay">
+    <div class="container hero-content">
+      <h1>งานการพยาบาลห้องผ่าตัด</h1>
+      <p>
+        โรงพยาบาลมหาวิทยาลัยพะเยา<br>
+        บริการพยาบาลห้องผ่าตัดที่ได้มาตรฐาน ผ่าตัดถูกคน ผ่าตัดถูกข้าง ผ่าตัดถูกตำแหน่ง ปลอดภัย และทันสมัย
+      </p>
+      <a href="#" class="btn-primary">
+        <i class="fa-solid fa-circle-info"></i>
+        ดูข้อมูลเพิ่มเติม
+      </a>
+    </div>
+  </div>
 
 </section>
+
+<style>
+/* HERO SLIDER */
+.hero{
+  position:relative;
+  height:75vh;
+  overflow:hidden;
+}
+
+.hero-slider{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.hero-slider img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.hero-slider img.active{
+  opacity:1;
+}
+
+/* HERO OVERLAY */
+.hero-overlay{
+  position:relative;
+  z-index:2;
+  height:100%;
+  background:rgba(0,0,0,0.35);
+  display:flex;
+  align-items:center;
+}
+
+.hero-content{
+  color:white;
+  max-width:600px;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  font-size:18px;
+  margin-bottom:26px;
+}
+</style>
+
+<script>
+// ===== HERO SLIDER =====
+const heroImages = document.querySelectorAll(".hero-slider img");
+let heroIndex = 0;
+
+function showHeroSlide() {
+  heroImages.forEach(img => img.classList.remove("active"));
+  heroImages[heroIndex].classList.add("active");
+  heroIndex = (heroIndex + 1) % heroImages.length;
+}
+
+// เริ่มสไลด์ทันทีและวนทุก 6 วินาที
+showHeroSlide();
+setInterval(showHeroSlide, 6000);
+</script>
 
 <!-- ABOUT -->
 <section class="about">
