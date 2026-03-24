@@ -574,61 +574,78 @@ lightbox.onclick = (e)=>{
   </div>
 </section>
 
-<!-- LIGHTBOX -->
+<!-- ===== LIGHTBOX ===== -->
 <div class="lightbox" id="lightbox">
   <span class="close">&times;</span>
-  <button class="nav prev">&#10094;</button>
   <img id="lightbox-img">
-  <button class="nav next">&#10095;</button>
 </div>
 
 <style>
-.schedule-grid{
+
+/* ===== A4 ===== */
+.knowledge-a4{
+  display:flex;
+  justify-content:center;
   background:#f0f0f0;
-  padding:30px 0;
-}
-.container{width:95%; margin:auto;}
-.section-title{
-  text-align:center;
-  color:#0f8a5f;
-  margin-bottom:20px;
-  font-size:28px;
+  padding:40px 0;
 }
 
-/* Grid 2 แถวแนวตั้ง */
-.grid-vertical{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  grid-template-rows:repeat(2,250px);
-  gap:12px;
+.a4-paper{
+  width:210mm;
+  min-height:297mm;
+  background:white;
+  padding:20mm;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
-.grid-vertical img{
+
+/* TITLE */
+.title{
+  text-align:center;
+  margin-bottom:20px;
+  color:#0f8a5f;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12mm;
+}
+
+.grid img{
   width:100%;
-  height:100%;
+  height:70mm;
   object-fit:cover;
-  border-radius:6px;
+  border-radius:8px;
   cursor:pointer;
   transition:0.3s;
 }
-.grid-vertical img:hover{transform:scale(1.03);}
 
-/* LIGHTBOX */
+.grid img:hover{
+  transform:scale(1.03);
+}
+
+/* ===== LIGHTBOX ===== */
 .lightbox{
   display:none;
   position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.9);
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
   z-index:9999;
 }
+
 .lightbox img{
   max-width:90%;
-  max-height:85%;
+  max-height:90%;
   border-radius:10px;
 }
-.close{
+
+.lightbox .close{
   position:absolute;
   top:20px;
   right:30px;
@@ -636,65 +653,38 @@ lightbox.onclick = (e)=>{
   color:white;
   cursor:pointer;
 }
-.nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:40px;
-  color:white;
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:10px;
-}
-.prev{left:20px;} .next{right:20px;}
 
-/* Responsive */
-@media(max-width:1200px){.grid-vertical{grid-template-columns:repeat(4,1fr);}}
-@media(max-width:900px){.grid-vertical{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:600px){.grid-vertical{grid-template-columns:repeat(2,1fr); grid-template-rows:auto;}}
-@media(max-width:400px){.grid-vertical{grid-template-columns:1fr; grid-template-rows:auto;}}
+/* PRINT */
+@media print{
+  .lightbox{display:none;}
+  .a4-paper{box-shadow:none;}
+}
+
 </style>
 
 <script>
-const images = document.querySelectorAll(".grid-vertical img");
+
+// เปิดรูป
+const images = document.querySelectorAll(".grid img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeBtn = document.querySelector(".close");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
 
-let currentIndex = 0;
-
-// เปิด Lightbox
-images.forEach((img,index)=>{
+images.forEach(img=>{
   img.addEventListener("click", ()=>{
-    currentIndex=index;
+    lightbox.style.display = "flex";
     lightboxImg.src = img.src;
-    lightbox.style.display="flex";
   });
 });
 
-// ปุ่มถัดไป
-nextBtn.onclick = ()=>{
-  currentIndex=(currentIndex+1)%images.length;
-  lightboxImg.src = images[currentIndex].src;
-};
-// ปุ่มก่อนหน้า
-prevBtn.onclick = ()=>{
-  currentIndex=(currentIndex-1+images.length)%images.length;
-  lightboxImg.src = images[currentIndex].src;
-};
-// ปิด Lightbox
-closeBtn.onclick = ()=>lightbox.style.display="none";
+// ปิด
+closeBtn.onclick = ()=> lightbox.style.display = "none";
+
 // คลิกพื้นหลังปิด
-lightbox.onclick = (e)=>{if(e.target===lightbox) lightbox.style.display="none";}
-// Keyboard navigation
-document.addEventListener("keydown",(e)=>{
-  if(lightbox.style.display==="flex"){
-    if(e.key==="ArrowRight") nextBtn.click();
-    if(e.key==="ArrowLeft") prevBtn.click();
-    if(e.key==="Escape") closeBtn.click();
+lightbox.onclick = (e)=>{
+  if(e.target === lightbox){
+    lightbox.style.display = "none";
   }
-});
+};
+
 </script>
