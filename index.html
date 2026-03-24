@@ -646,16 +646,16 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- DOCTOR SCHEDULE (2 แถวแนวตั้ง + LIGHTBOX, ไม่มีชื่อแพทย์) -->
-<section class="schedule-grid">
+<!-- DOCTOR SCHEDULE SLIDER 11 รูป สไลด์ทุก 6 วินาที + กรอบจัตุรัส -->
+<section class="schedule-slider">
   <div class="container">
     <h2 class="section-title">
       <i class="fa-solid fa-user-doctor"></i>
       ตารางแพทย์ออกตรวจ
     </h2>
 
-    <div class="grid-vertical">
-      <img src="assets/img/Uro.jpg" alt="Urology">
+    <div class="slider">
+      <img src="assets/img/Uro.jpg" alt="Urology" class="active">
       <img src="assets/img/Med1.jpg" alt="Medicine1">
       <img src="assets/img/Med.jpg" alt="Medicine2">
       <img src="assets/img/Ortho.jpg" alt="Orthopedics">
@@ -670,59 +670,53 @@ lightbox.onclick = (e)=>{
   </div>
 </section>
 
-<!-- ===== LIGHTBOX ===== -->
-<div class="lightbox" id="lightbox">
+<!-- LIGHTBOX -->
+<div class="lightbox" id="doctor-lightbox">
   <span class="close">&times;</span>
-  <img id="lightbox-img">
+  <img id="doctor-lightbox-img">
 </div>
 
 <style>
-
-/* ===== A4 ===== */
-.knowledge-a4{
-  display:flex;
-  justify-content:center;
-  background:#f0f0f0;
-  padding:40px 0;
-}
-
-.a4-paper{
-  width:210mm;
-  min-height:297mm;
-  background:white;
-  padding:20mm;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* TITLE */
-.title{
-  text-align:center;
-  margin-bottom:20px;
-  color:#0f8a5f;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12mm;
-}
-
-.grid img{
+/* ===== SLIDER ===== */
+.schedule-slider .slider{
+  position:relative;
   width:100%;
-  height:70mm;
+  aspect-ratio:1 / 1; /* กรอบจัตุรัส */
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  margin-top:30px;
+}
+
+.schedule-slider .slider img{
+  position:absolute;
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:8px;
+  opacity:0;
+  transition:opacity 1s ease;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.grid img:hover{
-  transform:scale(1.03);
+.schedule-slider .slider img.active{
+  opacity:1;
 }
 
-/* ===== LIGHTBOX ===== */
-.lightbox{
+/* RESPONSIVE */
+@media(max-width:768px){
+  .schedule-slider .slider{
+    aspect-ratio:1 / 1;
+  }
+}
+
+@media(max-width:480px){
+  .schedule-slider .slider{
+    aspect-ratio:1 / 1;
+  }
+}
+
+/* LIGHTBOX */
+#doctor-lightbox{
   display:none;
   position:fixed;
   top:0;
@@ -735,13 +729,13 @@ lightbox.onclick = (e)=>{
   z-index:9999;
 }
 
-.lightbox img{
+#doctor-lightbox img{
   max-width:90%;
   max-height:90%;
   border-radius:10px;
 }
 
-.lightbox .close{
+#doctor-lightbox .close{
   position:absolute;
   top:20px;
   right:30px;
@@ -749,41 +743,42 @@ lightbox.onclick = (e)=>{
   color:white;
   cursor:pointer;
 }
-
-/* PRINT */
-@media print{
-  .lightbox{display:none;}
-  .a4-paper{box-shadow:none;}
-}
-
 </style>
 
 <script>
+// ===== SLIDER LOGIC =====
+let doctorIndex = 0;
+const doctorSlides = document.querySelectorAll(".schedule-slider .slider img");
 
-// เปิดรูป
-const images = document.querySelectorAll(".grid img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.querySelector(".close");
+function showDoctorSlide(){
+  doctorSlides.forEach(img => img.classList.remove("active"));
+  doctorSlides[doctorIndex].classList.add("active");
+  doctorIndex = (doctorIndex + 1) % doctorSlides.length;
+}
 
-images.forEach(img=>{
+// สไลด์ทุก 6 วินาที
+setInterval(showDoctorSlide, 6000);
+
+// ===== LIGHTBOX LOGIC =====
+const doctorLightbox = document.getElementById("doctor-lightbox");
+const doctorLightboxImg = document.getElementById("doctor-lightbox-img");
+const doctorCloseBtn = doctorLightbox.querySelector(".close");
+
+doctorSlides.forEach(img => {
   img.addEventListener("click", ()=>{
-    lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
+    doctorLightbox.style.display = "flex";
+    doctorLightboxImg.src = img.src;
   });
 });
 
-// ปิด
-closeBtn.onclick = ()=> lightbox.style.display = "none";
-
-// คลิกพื้นหลังปิด
-lightbox.onclick = (e)=>{
-  if(e.target === lightbox){
-    lightbox.style.display = "none";
+// ปิด lightbox
+doctorCloseBtn.onclick = ()=> doctorLightbox.style.display = "none";
+doctorLightbox.onclick = (e)=>{
+  if(e.target === doctorLightbox){
+    doctorLightbox.style.display = "none";
   }
 };
-
-</script> 
+</script>
 
 <!-- FOOTER -->
 
