@@ -514,6 +514,47 @@ OR NURSE UPH
 </ul>
 
 </div>
+<!-- =========================
+KNOWLEDGE (สาระน่ารู้)
+========================= -->
+<section class="knowledge">
+
+<div class="container">
+
+<h2 class="section-title">
+<i class="fa-solid fa-lightbulb"></i>
+สาระน่ารู้
+</h2>
+
+<div class="knowledge-wrapper">
+
+<!-- SLIDER -->
+<div class="knowledge-slider">
+
+<img src="assets/img/know1.jpg" class="k-slide active">
+<img src="assets/img/know2.jpg" class="k-slide">
+<img src="assets/img/know3.jpg" class="k-slide">
+<img src="assets/img/know4.jpg" class="k-slide">
+<img src="assets/img/know5.jpg" class="k-slide">
+
+</div>
+
+<!-- TEXT -->
+<div class="knowledge-content">
+
+<h3 id="k-title">การเตรียมตัวก่อนผ่าตัด</h3>
+
+<p id="k-desc">
+ควรงดน้ำและอาหารตามคำแนะนำของแพทย์ และแจ้งประวัติการแพ้ยา
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 </section>
 
@@ -530,7 +571,7 @@ OR NURSE UPH
 
 <div class="doc-grid">
 
-<a href="documents/ target="_blank" class="doc-card">
+<a href="documents/nursing-manual.pdf" target="_blank" class="doc-card">
 <i class="fa-solid fa-file-medical"></i>
 <p>คู่มือการพยาบาล</p>
 </a>
@@ -597,3 +638,55 @@ setInterval(showSlide,4000);
 </body>
 </html>
 ```
+<script>
+
+// ===== Knowledge Slider =====
+const kSlides = document.querySelectorAll(".k-slide");
+
+const kData = [
+{
+title: "การเตรียมตัวก่อนผ่าตัด",
+desc: "ควรงดน้ำและอาหารตามคำแนะนำของแพทย์ และแจ้งประวัติการแพ้ยา"
+},
+{
+title: "การป้องกันการติดเชื้อ",
+desc: "ล้างมืออย่างถูกต้องก่อนและหลังการผ่าตัด"
+},
+{
+title: "การดูแลหลังผ่าตัด",
+desc: "ปฏิบัติตามคำแนะนำแพทย์อย่างเคร่งครัดเพื่อลดภาวะแทรกซ้อน"
+},
+{
+title: "การใช้ยาอย่างปลอดภัย",
+desc: "ตรวจสอบชื่อยา ขนาดยา และเวลาการใช้ยาอย่างถูกต้อง"
+},
+{
+title: "ความปลอดภัยในห้องผ่าตัด",
+desc: "ยึดหลัก Patient Safety: ถูกคน ถูกข้าง ถูกตำแหน่ง"
+}
+];
+
+let kIndex = 0;
+
+function showKSlide(){
+
+kSlides.forEach(s => s.classList.remove("active"));
+
+kIndex++;
+
+if(kIndex >= kSlides.length){
+kIndex = 0;
+}
+
+kSlides[kIndex].classList.add("active");
+
+// เปลี่ยนข้อความ
+document.getElementById("k-title").innerText = kData[kIndex].title;
+document.getElementById("k-desc").innerText = kData[kIndex].desc;
+
+}
+
+// เปลี่ยนทุก 5 วินาที
+setInterval(showKSlide,5000);
+
+</script>
