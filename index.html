@@ -493,3 +493,56 @@ slides[index].classList.add("active");
 },5000);
 </script>
 
+<!-- ===== KNOWLEDGE SLIDER CSS ===== -->
+<style>
+.knowledge-slider,
+.schedule-slider .slider-track {
+position:relative;
+width:100%;
+max-width:800px;
+margin:auto;
+height:320px;
+overflow:hidden;
+border-radius:12px;
+}
+
+.knowledge-slider img,
+.slider-track img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease;
+}
+
+.knowledge-slider img.active,
+.slider-track img.active{
+opacity:1;
+}
+
+/* schedule button */
+.schedule-slider{
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+}
+
+.schedule-slider button{
+background:white;
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+box-shadow:0 2px 8px rgba(0,0,0,0.15);
+cursor:pointer;
+font-size:18px;
+}
+
+.schedule-slider button:hover{
+background:var(--primary);
+color:white;
+}
+</style>
