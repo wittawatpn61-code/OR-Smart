@@ -244,3 +244,6 @@ box-shadow:0 10px 25px rgba(0,0,0,0.1);
 .about-box p{
 margin-bottom:12px;
 }
+.about-box{
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+}
