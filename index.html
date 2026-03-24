@@ -550,7 +550,7 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- DOCTOR SCHEDULE (GRID + LIGHTBOX) -->
+<!-- DOCTOR SCHEDULE (2 ROWS + LIGHTBOX) -->
 <section class="schedule-grid">
   <div class="container">
     <h2 class="section-title">
@@ -596,14 +596,17 @@ lightbox.onclick = (e)=>{
   margin-bottom:20px;
   font-size:28px;
 }
+
+/* 2 แถว Grid */
 .grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:150px;
   gap:12px;
 }
 .grid img{
   width:100%;
-  height:150px;
+  height:100%;
   object-fit:cover;
   border-radius:6px;
   cursor:pointer;
@@ -651,9 +654,11 @@ lightbox.onclick = (e)=>{
 .prev{left:20px;}
 .next{right:20px;}
 
-@media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr);} }
-@media(max-width:768px){ .grid{grid-template-columns:repeat(2,1fr);} }
-@media(max-width:480px){ .grid{grid-template-columns:1fr;} }
+/* Responsive สำหรับมือถือ */
+@media(max-width:1200px){ .grid{grid-template-columns:repeat(4,1fr);} }
+@media(max-width:900px){ .grid{grid-template-columns:repeat(3,1fr);} }
+@media(max-width:600px){ .grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:400px){ .grid{grid-template-columns:1fr;} }
 </style>
 
 <script>
