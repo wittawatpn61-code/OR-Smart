@@ -550,7 +550,7 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- ===== DOCTOR SCHEDULE A4 LANDSCAPE ===== -->
+<!-- ===== DOCTOR SCHEDULE A4 ===== -->
 <section class="schedule-a4">
   <div class="a4-landscape">
 
@@ -581,12 +581,14 @@ lightbox.onclick = (e)=>{
 <!-- ===== LIGHTBOX ===== -->
 <div class="lightbox" id="lightbox">
   <span class="close">&times;</span>
+  <button class="nav prev">&#10094;</button>
   <img id="lightbox-img">
+  <button class="nav next">&#10095;</button>
 </div>
 
 <style>
 
-/* ===== A4 LANDSCAPE ===== */
+/* ===== A4 ===== */
 .schedule-a4{
   display:flex;
   justify-content:center;
@@ -600,7 +602,6 @@ lightbox.onclick = (e)=>{
   background:white;
   padding:15mm;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  box-sizing:border-box;
 }
 
 /* TITLE */
@@ -610,14 +611,13 @@ lightbox.onclick = (e)=>{
   color:#0f8a5f;
 }
 
-/* ===== GRID 11 ช่อง ===== */
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:8mm;
 }
 
-/* รูป */
 .grid img{
   width:100%;
   height:45mm;
@@ -629,17 +629,14 @@ lightbox.onclick = (e)=>{
 
 .grid img:hover{
   transform:scale(1.03);
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* ===== LIGHTBOX ===== */
 .lightbox{
   display:none;
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:0;left:0;
+  width:100%;height:100%;
   background:rgba(0,0,0,0.9);
   justify-content:center;
   align-items:center;
@@ -648,11 +645,12 @@ lightbox.onclick = (e)=>{
 
 .lightbox img{
   max-width:90%;
-  max-height:90%;
+  max-height:85%;
   border-radius:10px;
 }
 
-.lightbox .close{
+/* ปุ่มปิด */
+.close{
   position:absolute;
   top:20px;
   right:30px;
@@ -661,61 +659,85 @@ lightbox.onclick = (e)=>{
   cursor:pointer;
 }
 
-/* ===== PRINT ===== */
+/* ปุ่มเลื่อน */
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:10px;
+}
+
+.prev{left:20px;}
+.next{right:20px;}
+
+/* PRINT */
 @media print{
-  body{background:white;}
-  .schedule-a4{padding:0;}
-  .a4-landscape{
-    width:297mm;
-    height:210mm;
-    box-shadow:none;
-  }
   .lightbox{display:none;}
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1024px){
-  .grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-
-@media(max-width:768px){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:480px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+  .a4-landscape{box-shadow:none;}
 }
 
 </style>
 
 <script>
 
-// ===== LIGHTBOX =====
-const imgs = document.querySelectorAll(".grid img");
+const images = document.querySelectorAll(".grid img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeBtn = document.querySelector(".close");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
 
-imgs.forEach(img=>{
+let currentIndex = 0;
+
+// เปิดภาพ
+images.forEach((img, index)=>{
   img.addEventListener("click", ()=>{
+    currentIndex = index;
+    showImage();
     lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
   });
 });
 
+// แสดงภาพ
+function showImage(){
+  lightboxImg.src = images[currentIndex].src;
+}
+
+// next
+nextBtn.onclick = ()=>{
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage();
+};
+
+// prev
+prevBtn.onclick = ()=>{
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage();
+};
+
+// ปิด
 closeBtn.onclick = ()=> lightbox.style.display = "none";
 
+// คลิกพื้นหลังปิด
 lightbox.onclick = (e)=>{
   if(e.target === lightbox){
     lightbox.style.display = "none";
   }
 };
+
+// keyboard
+document.addEventListener("keydown", (e)=>{
+  if(lightbox.style.display === "flex"){
+    if(e.key === "ArrowRight") nextBtn.click();
+    if(e.key === "ArrowLeft") prevBtn.click();
+    if(e.key === "Escape") closeBtn.click();
+  }
+});
 
 </script>
 
