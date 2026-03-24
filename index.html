@@ -414,27 +414,75 @@ OR NURSE UPH
 </div>
 </section>
 
-<!-- KNOWLEDGE -->
+<!-- ===== KNOWLEDGE SECTION ===== -->
 <section class="knowledge">
-<div class="container">
+  <div class="container">
 
-<h2 class="section-title">
-<i class="fa-solid fa-lightbulb"></i>
-สาระน่ารู้
-</h2>
+    <h2 class="section-title">
+      <i class="fa-solid fa-lightbulb"></i>
+      สาระน่ารู้
+    </h2>
 
-<div class="knowledge-slider single">
+    <div class="knowledge-grid">
+      <img src="assets/img/01.jpg" alt="knowledge1">
+      <img src="assets/img/02.jpg" alt="knowledge2">
+      <img src="assets/img/03.jpg" alt="knowledge3">
+      <img src="assets/img/04.jpg" alt="knowledge4">
+      <img src="assets/img/S__42688523.jpg" alt="knowledge5">
+      <img src="assets/img/06.jpg" alt="knowledge6">
+    </div>
 
-<img src="assets/img/01.jpg" class="active">
-<img src="assets/img/02.jpg">
-<img src="assets/img/03.jpg">
-<img src="assets/img/04.jpg">
-<img src="assets/img/S__42688523.jpg">
-<img src="assets/img/06.jpg">
-
-</div>
-
+  </div>
 </section>
+
+<!-- ===== CSS ===== -->
+<style>
+/* KNOWLEDGE GRID */
+.knowledge-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* รูปภาพ */
+.knowledge-grid img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
+  transition:0.3s ease;
+  cursor:pointer;
+}
+
+/* hover effect */
+.knowledge-grid img:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .knowledge-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .knowledge-grid img{
+    height:180px;
+  }
+}
+
+@media(max-width:500px){
+  .knowledge-grid{
+    grid-template-columns:1fr;
+  }
+
+  .knowledge-grid img{
+    height:200px;
+  }
+}
+</style>
 
 <!-- DOCTOR SCHEDULE (SLIDER) -->
 <section class="schedule">
