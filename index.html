@@ -230,6 +230,75 @@ color:var(--primary);
 margin-bottom:10px;
 }
 
+<!-- ACTIVITIES SLIDER -->
+<section class="activities">
+  <div class="container">
+    <h2 class="section-title">
+      <i class="fa-solid fa-images"></i>
+      กิจกรรมภายในหน่วยงาน
+    </h2>
+
+    <div class="activities-slider">
+      <!-- ใส่รูปที่นี่ สามารถเพิ่มหรือลบได้ตามต้องการ -->
+      <img src="assets//activity1.jpg" class="active" alt="กิจกรรม 1">
+      <img src="assets/img/activity2.jpg" alt="กิจกรรม 2">
+      <img src="assets/img/activity3.jpg" alt="กิจกรรม 3">
+      <img src="assets/img/activity4.jpg" alt="กิจกรรม 4">
+    </div>
+  </div>
+</section>
+
+<style>
+.activities-slider{
+  position:relative;
+  width:100%;
+  height:300px;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  margin-top:30px;
+}
+
+.activities-slider img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.activities-slider img.active{
+  opacity:1;
+}
+
+@media(max-width:768px){
+  .activities-slider{height:200px;}
+}
+
+@media(max-width:480px){
+  .activities-slider{height:150px;}
+}
+</style>
+
+<script>
+// ===== ACTIVITIES SLIDER =====
+let activityIndex = 0;
+const activitySlides = document.querySelectorAll(".activities-slider img");
+
+function showActivitySlide(){
+  activitySlides.forEach((img,i)=>{
+    img.classList.remove("active");
+  });
+  activitySlides[activityIndex].classList.add("active");
+  activityIndex++;
+  if(activityIndex >= activitySlides.length) activityIndex = 0;
+}
+
+// สไลด์อัตโนมัติทุก 10 วินาที
+setInterval(showActivitySlide, 10000);
+</script>
+
 /* ===== FOOTER ===== */
 .footer{
 background:var(--primary);
