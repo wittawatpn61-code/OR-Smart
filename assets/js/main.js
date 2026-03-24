@@ -251,3 +251,29 @@ setInterval(()=>{
 
 });
 </script>
+
+<script>
+let scheduleSlides = document.querySelectorAll(".slider-track img");
+let current = 0;
+
+// auto slide
+setInterval(()=>{
+scheduleSlides[current].classList.remove("active");
+current = (current + 1) % scheduleSlides.length;
+scheduleSlides[current].classList.add("active");
+},5000);
+
+// next
+document.querySelector(".next").onclick = () => {
+scheduleSlides[current].classList.remove("active");
+current = (current + 1) % scheduleSlides.length;
+scheduleSlides[current].classList.add("active");
+};
+
+// prev
+document.querySelector(".prev").onclick = () => {
+scheduleSlides[current].classList.remove("active");
+current = (current - 1 + scheduleSlides.length) % scheduleSlides.length;
+scheduleSlides[current].classList.add("active");
+};
+</script>
