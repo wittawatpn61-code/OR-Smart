@@ -345,10 +345,9 @@ text-decoration:none;
 text-decoration:underline;
 }
 
-/* ===== SCHEDULE SLIDER (1 IMAGE ONLY) ===== */
 .schedule-slider{
 position:relative;
-max-width:700px;
+max-width:750px;
 margin:auto;
 overflow:hidden;
 }
@@ -356,10 +355,10 @@ overflow:hidden;
 .slider-track{
 position:relative;
 width:100%;
-height:380px;
+height:400px;
 }
 
-/* ซ่อนทุกรูป */
+/* ทุกภาพซ้อนกัน แต่ซ่อน */
 .slider-track img{
 position:absolute;
 top:0;
@@ -368,11 +367,11 @@ width:100%;
 height:100%;
 object-fit:cover;
 opacity:0;
-transition:opacity 0.8s ease;
+transition:opacity 1s ease;
 border-radius:12px;
 }
 
-/* แสดงทีละรูป */
+/* แสดงทีละภาพ */
 .slider-track img.active{
 opacity:1;
 z-index:1;
@@ -393,8 +392,8 @@ border-radius:50%;
 z-index:2;
 }
 
-.schedule-slider .prev{left:10px;}
-.schedule-slider .next{right:10px;}
+.prev{left:10px;}
+.next{right:10px;}
 
 .schedule-slider button:hover{
 background:var(--primary);
