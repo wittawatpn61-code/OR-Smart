@@ -278,3 +278,28 @@ opacity:0.15; /* จางลงให้ดูหรู */
 .about-box{
 border:1px solid rgba(255,255,255,0.2);
 }
+
+/* ทำให้ a ดูเหมือน card */
+.doc-card{
+display:block;
+text-decoration:none;
+color:var(--text);
+background:white;
+padding:28px;
+text-align:center;
+border-radius:12px;
+border:1px solid var(--border);
+transition:0.25s;
+}
+
+.doc-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+color:var(--primary); /* hover เปลี่ยนสี */
+}
+
+.doc-card i{
+font-size:34px;
+color:var(--primary);
+margin-bottom:10px;
+}
