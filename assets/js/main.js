@@ -231,3 +231,23 @@ kIndex = (kIndex + 1) % kSlides.length;
 kSlides[kIndex].classList.add("active");
 },6000);
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+let slides = document.querySelectorAll(".knowledge-slider.single img");
+let index = 0;
+
+setInterval(()=>{
+    slides[index].classList.remove("active");
+
+    index++;
+    if(index >= slides.length){
+        index = 0;
+    }
+
+    slides[index].classList.add("active");
+
+},6000); // 6 วินาที
+
+});
+</script>
