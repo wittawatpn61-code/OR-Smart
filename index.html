@@ -550,7 +550,7 @@ lightbox.onclick = (e)=>{
 
 </script>
 
-<!-- ===== DOCTOR SCHEDULE A4 ===== -->
+<!-- ===== DOCTOR SCHEDULE A4 WITH LIGHTBOX ===== -->
 <section class="schedule-a4">
   <div class="a4-landscape">
 
@@ -587,8 +587,6 @@ lightbox.onclick = (e)=>{
 </div>
 
 <style>
-
-/* ===== A4 ===== */
 .schedule-a4{
   display:flex;
   justify-content:center;
@@ -602,16 +600,15 @@ lightbox.onclick = (e)=>{
   background:white;
   padding:15mm;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  box-sizing:border-box;
 }
 
-/* TITLE */
 .title{
   text-align:center;
   margin-bottom:15px;
   color:#0f8a5f;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -631,12 +628,12 @@ lightbox.onclick = (e)=>{
   transform:scale(1.03);
 }
 
-/* ===== LIGHTBOX ===== */
+/* LIGHTBOX */
 .lightbox{
   display:none;
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  top:0; left:0;
+  width:100%; height:100%;
   background:rgba(0,0,0,0.9);
   justify-content:center;
   align-items:center;
@@ -649,7 +646,6 @@ lightbox.onclick = (e)=>{
   border-radius:10px;
 }
 
-/* ปุ่มปิด */
 .close{
   position:absolute;
   top:20px;
@@ -659,7 +655,6 @@ lightbox.onclick = (e)=>{
   cursor:pointer;
 }
 
-/* ปุ่มเลื่อน */
 .nav{
   position:absolute;
   top:50%;
@@ -675,16 +670,17 @@ lightbox.onclick = (e)=>{
 .prev{left:20px;}
 .next{right:20px;}
 
-/* PRINT */
 @media print{
   .lightbox{display:none;}
   .a4-landscape{box-shadow:none;}
 }
 
+@media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr);} }
+@media(max-width:768px){ .grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:480px){ .grid{grid-template-columns:1fr;} }
 </style>
 
 <script>
-
 const images = document.querySelectorAll(".grid img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
@@ -694,7 +690,7 @@ const prevBtn = document.querySelector(".prev");
 
 let currentIndex = 0;
 
-// เปิดภาพ
+// เปิด Lightbox
 images.forEach((img, index)=>{
   img.addEventListener("click", ()=>{
     currentIndex = index;
@@ -703,24 +699,24 @@ images.forEach((img, index)=>{
   });
 });
 
-// แสดงภาพ
+// แสดงรูป
 function showImage(){
   lightboxImg.src = images[currentIndex].src;
 }
 
-// next
+// ปุ่มถัดไป
 nextBtn.onclick = ()=>{
   currentIndex = (currentIndex + 1) % images.length;
   showImage();
 };
 
-// prev
+// ปุ่มก่อนหน้า
 prevBtn.onclick = ()=>{
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   showImage();
 };
 
-// ปิด
+// ปิด Lightbox
 closeBtn.onclick = ()=> lightbox.style.display = "none";
 
 // คลิกพื้นหลังปิด
@@ -730,7 +726,7 @@ lightbox.onclick = (e)=>{
   }
 };
 
-// keyboard
+// Keyboard navigation
 document.addEventListener("keydown", (e)=>{
   if(lightbox.style.display === "flex"){
     if(e.key === "ArrowRight") nextBtn.click();
@@ -738,6 +734,6 @@ document.addEventListener("keydown", (e)=>{
     if(e.key === "Escape") closeBtn.click();
   }
 });
-
 </script>
+
 
