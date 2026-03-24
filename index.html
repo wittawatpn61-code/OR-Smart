@@ -510,8 +510,8 @@ function showActivitySlide(){
 setInterval(showActivitySlide, 10000);
 </script>
 
-<!-- ===== KNOWLEDGE A4 ===== -->
-<section class="knowledge-a4">
+<!-- ===== KNOWLEDGE A4 SLIDER 6 รูป สไลด์ทุก 6 วินาที + กรอบ 5:7 ===== -->
+<section class="knowledge-a4-slider">
   <div class="a4-paper">
 
     <h2 class="title">
@@ -519,8 +519,8 @@ setInterval(showActivitySlide, 10000);
       สาระน่ารู้
     </h2>
 
-    <div class="grid">
-      <img src="assets/img/01.jpg">
+    <div class="slider">
+      <img src="assets/img/01.jpg" class="active">
       <img src="assets/img/02.jpg">
       <img src="assets/img/03.jpg">
       <img src="assets/img/04.jpg">
@@ -532,58 +532,39 @@ setInterval(showActivitySlide, 10000);
 </section>
 
 <!-- ===== LIGHTBOX ===== -->
-<div class="lightbox" id="lightbox">
+<div class="lightbox" id="knowledge-lightbox">
   <span class="close">&times;</span>
-  <img id="lightbox-img">
+  <img id="knowledge-lightbox-img">
 </div>
 
 <style>
-
-/* ===== A4 ===== */
-.knowledge-a4{
-  display:flex;
-  justify-content:center;
-  background:#f0f0f0;
-  padding:40px 0;
-}
-
-.a4-paper{
-  width:210mm;
-  min-height:297mm;
-  background:white;
-  padding:20mm;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* TITLE */
-.title{
-  text-align:center;
-  margin-bottom:20px;
-  color:#0f8a5f;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12mm;
-}
-
-.grid img{
+/* ===== SLIDER ===== */
+.knowledge-a4-slider .slider{
+  position:relative;
   width:100%;
-  height:70mm;
+  aspect-ratio:5 / 7; /* กรอบ 5:7 */
+  overflow:hidden;
+  border-radius:12px;
+  margin-top:30px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.knowledge-a4-slider .slider img{
+  position:absolute;
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:8px;
+  opacity:0;
+  transition:opacity 1s ease;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.grid img:hover{
-  transform:scale(1.03);
+.knowledge-a4-slider .slider img.active{
+  opacity:1;
 }
 
-/* ===== LIGHTBOX ===== */
-.lightbox{
+/* LIGHTBOX */
+#knowledge-lightbox{
   display:none;
   position:fixed;
   top:0;
@@ -596,13 +577,13 @@ setInterval(showActivitySlide, 10000);
   z-index:9999;
 }
 
-.lightbox img{
+#knowledge-lightbox img{
   max-width:90%;
   max-height:90%;
   border-radius:10px;
 }
 
-.lightbox .close{
+#knowledge-lightbox .close{
   position:absolute;
   top:20px;
   right:30px;
@@ -611,39 +592,53 @@ setInterval(showActivitySlide, 10000);
   cursor:pointer;
 }
 
-/* PRINT */
-@media print{
-  .lightbox{display:none;}
-  .a4-paper{box-shadow:none;}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .knowledge-a4-slider .slider{
+    aspect-ratio:5 / 7;
+  }
 }
 
+@media(max-width:480px){
+  .knowledge-a4-slider .slider{
+    aspect-ratio:5 / 7;
+  }
+}
 </style>
 
 <script>
+// ===== SLIDER LOGIC =====
+let knowledgeIndex = 0;
+const knowledgeSlides = document.querySelectorAll(".knowledge-a4-slider .slider img");
 
-// เปิดรูป
-const images = document.querySelectorAll(".grid img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.querySelector(".close");
+function showKnowledgeSlide(){
+  knowledgeSlides.forEach(img => img.classList.remove("active"));
+  knowledgeSlides[knowledgeIndex].classList.add("active");
+  knowledgeIndex = (knowledgeIndex + 1) % knowledgeSlides.length;
+}
 
-images.forEach(img=>{
+// สไลด์ทุก 6 วินาที
+setInterval(showKnowledgeSlide, 6000);
+
+// ===== LIGHTBOX LOGIC =====
+const knowledgeLightbox = document.getElementById("knowledge-lightbox");
+const knowledgeLightboxImg = document.getElementById("knowledge-lightbox-img");
+const knowledgeCloseBtn = knowledgeLightbox.querySelector(".close");
+
+knowledgeSlides.forEach(img => {
   img.addEventListener("click", ()=>{
-    lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
+    knowledgeLightbox.style.display = "flex";
+    knowledgeLightboxImg.src = img.src;
   });
 });
 
-// ปิด
-closeBtn.onclick = ()=> lightbox.style.display = "none";
-
-// คลิกพื้นหลังปิด
-lightbox.onclick = (e)=>{
-  if(e.target === lightbox){
-    lightbox.style.display = "none";
+// ปิด lightbox
+knowledgeCloseBtn.onclick = ()=> knowledgeLightbox.style.display = "none";
+knowledgeLightbox.onclick = (e)=>{
+  if(e.target === knowledgeLightbox){
+    knowledgeLightbox.style.display = "none";
   }
 };
-
 </script>
 
 <!-- DOCTOR SCHEDULE SLIDER 11 รูป สไลด์ทุก 6 วินาที + กรอบจัตุรัส -->
