@@ -239,8 +239,7 @@ margin-bottom:10px;
     </h2>
 
     <div class="activities-slider">
-      <!-- ใส่รูปที่นี่ สามารถเพิ่มหรือลบได้ตามต้องการ -->
-      <img src="assets//activity1.jpg" class="active" alt="กิจกรรม 1">
+      <img src="assets/img/activity1.jpg" class="active" alt="กิจกรรม 1">
       <img src="assets/img/activity2.jpg" alt="กิจกรรม 2">
       <img src="assets/img/activity3.jpg" alt="กิจกรรม 3">
       <img src="assets/img/activity4.jpg" alt="กิจกรรม 4">
@@ -249,6 +248,7 @@ margin-bottom:10px;
 </section>
 
 <style>
+/* ===== ACTIVITIES SLIDER ===== */
 .activities-slider{
   position:relative;
   width:100%;
@@ -272,12 +272,17 @@ margin-bottom:10px;
   opacity:1;
 }
 
+/* RESPONSIVE */
 @media(max-width:768px){
-  .activities-slider{height:200px;}
+  .activities-slider{
+    height:200px;
+  }
 }
 
 @media(max-width:480px){
-  .activities-slider{height:150px;}
+  .activities-slider{
+    height:150px;
+  }
 }
 </style>
 
@@ -295,9 +300,10 @@ function showActivitySlide(){
   if(activityIndex >= activitySlides.length) activityIndex = 0;
 }
 
-// สไลด์อัตโนมัติทุก 10 วินาที
+// เริ่มสไลด์ทุก 10 วินาที
 setInterval(showActivitySlide, 10000);
 </script>
+
 
 /* ===== FOOTER ===== */
 .footer{
