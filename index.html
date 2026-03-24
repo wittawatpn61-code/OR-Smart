@@ -492,19 +492,75 @@ setInterval(showHeroSlide, 6000);
 <p>แนวทาง</p>
 </a>
 
-<a href="documents/Pink Flat Mental Health Brochure.pdf" class="doc-card" target="_blank">
-<i class="fa-solid fa-file"></i>
-<a href="documents/คำแนะนำผู้ป่วยที่ได้รับการผ่าตัดTKA.pdf" class="doc-card" target="_blank">
-<i class="fa-solid fa-file"></i>
-<a href="documents/การปฎิบัติตัวสำหรับผู้ป่วยที่ได้รับการผ่าตัดเปลี่ยนข้อสะโพกเทียม.pdf" class="doc-card" target="_blank">
-<i class="fa-solid fa-file"></i>
-<p>แผ่นพับ</p>
-</a>
+<!-- DOCUMENTS: แผ่นพับ -->
+<section class="documents">
+  <div class="container">
 
-</div>
+    <h2 class="section-title">แผ่นพับ</h2>
 
-</div>
+    <div class="doc-grid">
+
+      <!-- ลิงก์แผ่นพับแต่ละไฟล์ -->
+      <a href="documents/Pink Flat Mental Health Brochure.pdf" class="doc-card" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i>
+        <p>Pink Flat Mental Health Brochure</p>
+      </a>
+
+      <a href="documents/คำแนะนำผู้ป่วยที่ได้รับการผ่าตัดTKA.pdf" class="doc-card" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i>
+        <p>คำแนะนำผู้ป่วยที่ได้รับการผ่าตัด TKA</p>
+      </a>
+
+      <a href="documents/การปฎิบัติตัวสำหรับผู้ป่วยที่ได้รับการผ่าตัดเปลี่ยนข้อสะโพกเทียม.pdf" class="doc-card" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i>
+        <p>การปฏิบัติตัวสำหรับผู้ป่วยที่ได้รับการผ่าตัดเปลี่ยนข้อสะโพกเทียม</p>
+      </a>
+
+    </div>
+
+  </div>
 </section>
+
+<style>
+/* ===== DOCUMENT GRID ===== */
+.doc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.doc-card{
+  background:white;
+  padding:20px;
+  text-align:center;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  transition:0.25s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#1f2933;
+}
+
+.doc-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.doc-card i{
+  font-size:36px;
+  color:#0f8a5f;
+  margin-bottom:10px;
+}
+
+.doc-card p{
+  font-size:16px;
+  text-align:center;
+  line-height:1.4;
+}
+</style>
 
 <!-- ACTIVITIES SLIDER 4:3 -->
 <section class="activities">
