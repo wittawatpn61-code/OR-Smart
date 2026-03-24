@@ -437,7 +437,7 @@ OR NURSE UPH
 </div>
 </section>
 
-<!-- ACTIVITIES SLIDER -->
+<!-- ACTIVITIES SLIDER 4:3 -->
 <section class="activities">
   <div class="container">
     <h2 class="section-title">
@@ -446,21 +446,22 @@ OR NURSE UPH
     </h2>
 
     <div class="activities-slider">
-      <!-- ใส่รูปที่นี่ 4 รูป (หรือมากกว่านั้นก็ได้) -->
-      <img src="assets/img/Training2.jpg" class="active" alt="กิจกรรม 1">
-      <img src="assets/img/Training.jpg" alt="กิจกรรม 2">
-      <img src="assets/img/Auto CPR.jpg" alt="กิจกรรม 3">
-      <img src="assets/img/RCA.jpg" alt="กิจกรรม 4">
+      <!-- ใส่รูปที่นี่ 4 รูป -->
+      <img src="assets/img/activity1.jpg" class="active" alt="กิจกรรม 1">
+      <img src="assets/img/activity2.jpg" alt="กิจกรรม 2">
+      <img src="assets/img/activity3.jpg" alt="กิจกรรม 3">
+      <img src="assets/img/activity4.jpg" alt="กิจกรรม 4">
     </div>
   </div>
 </section>
 
 <style>
-/* ===== ACTIVITIES SLIDER ===== */
+/* ===== ACTIVITIES SLIDER 4:3 ===== */
 .activities-slider{
   position:relative;
   width:100%;
-  height:300px;
+  /* กำหนดอัตราส่วน 4:3 */
+  aspect-ratio: 4 / 3;
   overflow:hidden;
   border-radius:12px;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
@@ -482,11 +483,15 @@ OR NURSE UPH
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .activities-slider{height:200px;}
+  .activities-slider{
+    aspect-ratio: 4 / 3; /* ยังคง 4:3 */
+  }
 }
 
 @media(max-width:480px){
-  .activities-slider{height:150px;}
+  .activities-slider{
+    aspect-ratio: 4 / 3;
+  }
 }
 </style>
 
@@ -496,12 +501,9 @@ let activityIndex = 0;
 const activitySlides = document.querySelectorAll(".activities-slider img");
 
 function showActivitySlide(){
-  activitySlides.forEach((img,i)=>{
-    img.classList.remove("active");
-  });
+  activitySlides.forEach(img => img.classList.remove("active"));
   activitySlides[activityIndex].classList.add("active");
-  activityIndex++;
-  if(activityIndex >= activitySlides.length) activityIndex = 0;
+  activityIndex = (activityIndex + 1) % activitySlides.length;
 }
 
 // เริ่มสไลด์ทุก 10 วินาที
