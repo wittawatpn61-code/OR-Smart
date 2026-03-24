@@ -108,75 +108,49 @@ display:none;
 font-size:22px;
 }
 
-/* =========================
-HERO SLIDER
-========================= */
+<section class="hero">
 
-.hero{
-position:relative;
-height:80vh;
-overflow:hidden;
-}
+<div class="hero-slider" id="heroSlider">
 
-.hero-slider{
-position:absolute;
-width:100%;
-height:100%;
-}
+<!-- SLIDES -->
+<div class="slide active">
+<img src="assets/img/banner1.jpg" loading="lazy">
+</div>
 
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:opacity 1s ease-in-out;
-}
+<div class="slide">
+<img src="assets/img/IMG_1624.jpg" loading="lazy">
+</div>
 
-.slide.active{
-opacity:1;
-}
+<div class="slide">
+<img src="assets/img/01.jpg" loading="lazy">
+</div>
 
-.hero-overlay{
-position:relative;
-z-index:2;
-background:rgba(0,0,0,0.35);
-height:100%;
-display:flex;
-align-items:center;
-}
+<!-- NAV -->
+<button class="nav prev">&#10094;</button>
+<button class="nav next">&#10095;</button>
 
-.hero-content{
-color:white;
-max-width:600px;
-}
+<!-- DOT -->
+<div class="dots" id="heroDots"></div>
 
-.hero h1{
-font-size:42px;
-margin-bottom:12px;
-}
+</div>
 
-.hero p{
-font-size:18px;
-margin-bottom:26px;
-}
+<!-- OVERLAY -->
+<div class="hero-overlay">
+<div class="container hero-content">
 
-.btn-primary{
-display:inline-flex;
-align-items:center;
-gap:8px;
-background:var(--primary);
-color:white;
-padding:12px 22px;
-border-radius:8px;
-text-decoration:none;
-font-weight:500;
-transition:0.25s;
-}
+<h1 class="fade-up">งานการพยาบาลห้องผ่าตัด</h1>
+<p class="fade-up delay-1">
+บริการปลอดภัย ได้มาตรฐาน ถูกคน ถูกข้าง ถูกตำแหน่ง
+</p>
 
-.btn-primary:hover{
-background:var(--primary-dark);
-}
+<a href="#" class="btn-primary fade-up delay-2">
+ดูข้อมูลเพิ่มเติม
+</a>
+
+</div>
+</div>
+
+</section>
 
 /* =========================
 SECTION
