@@ -886,3 +886,47 @@ background:var(--primary);
     height: 350px;
   }
 }
+
+/* SLIDER */
+.slider {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 70px);
+  overflow: hidden;
+}
+
+/* slide แต่ละชุด */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* แสดง */
+.slide.active {
+  opacity: 1;
+}
+
+/* รูป */
+.slide img {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* 📱 มือถือ = เหลือ 1 รูป */
+@media (max-width: 768px) {
+  .slide {
+    flex-direction: column;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 50%;
+  }
+}
