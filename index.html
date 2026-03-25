@@ -270,11 +270,11 @@ font-size:14px;
 
     <nav class="navbar">
       <ul>
-        <li><a href="#about">เกี่ยวกับเรา</a></li>
+        <li><a href="#about-section">เกี่ยวกับเรา</a></li>
         <li><a href="pages/personel.html">บุคลากร</a></li>
-        <li><a href="#news">ข่าวประชาสัมพันธ์</a></li>
-        <li><a href="#downloads">ดาวน์โหลด</a></li>
-        <li><a href="#contact">ติดต่อ</a></li>
+        <li><a href="#news-section">ข่าวประชาสัมพันธ์</a></li>
+        <li><a href="#documents-section">ดาวน์โหลด</a></li>
+        <li><a href="#contact-section">ติดต่อ</a></li>
       </ul>
     </nav>
 
@@ -285,14 +285,29 @@ font-size:14px;
   </div>
 </header>
 
-<!-- ตัวอย่าง Section -->
-<section id="about"><h2>เกี่ยวกับเรา</h2></section>
-<section id="news"><h2>ข่าวประชาสัมพันธ์</h2></section>
-<section id="downloads"><h2>ดาวน์โหลด</h2></section>
-<section id="contact"><h2>ติดต่อ</h2></section>
+<!-- SECTION ตัวอย่าง -->
+<section id="about-section">
+  <h2>เกี่ยวกับหน่วยงาน</h2>
+  <p>เนื้อหาของเกี่ยวกับหน่วยงาน...</p>
+</section>
+
+<section id="news-section">
+  <h2>ข่าวประชาสัมพันธ์</h2>
+  <p>เนื้อหาของข่าวประชาสัมพันธ์...</p>
+</section>
+
+<section id="documents-section">
+  <h2>หมวดหมู่เอกสาร</h2>
+  <p>เนื้อหาของเอกสาร...</p>
+</section>
+
+<section id="contact-section">
+  <h2>ติดต่อ</h2>
+  <p>เนื้อหาส่วนติดต่อ...</p>
+</section>
 
 <style>
-/* ======= HEADER STYLE ======= */
+/* ===== HEADER ===== */
 .header {
   background: #007BFF;
   color: white;
@@ -359,6 +374,17 @@ font-size:14px;
   .mobile-menu {
     display: block;
   }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ตัวอย่าง section */
+section {
+  padding: 100px 20px;
+  border-bottom: 1px solid #ddd;
 }
 </style>
 
