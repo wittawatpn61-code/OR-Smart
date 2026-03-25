@@ -768,3 +768,62 @@ background:var(--primary);
     height: 220px;
   }
 }
+
+/* ===== A4 STYLE ===== */
+.knowledge-a4-slider {
+  display: flex;
+  justify-content: center;
+  padding: 40px 10px;
+  background: #f5f5f5;
+}
+
+.a4-paper {
+  width: 794px;         /* A4 แนวนอน */
+  max-width: 100%;
+  height: 1123px;       /* A4 แนวตั้ง */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* หัวข้อ */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* SLIDER */
+.slider {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 80px);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* รูป */
+.slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ไม่ตัดรูป */
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* รูปที่แสดง */
+.slider img.active {
+  opacity: 1;
+}
+
+/* 📱 มือถือ */
+@media (max-width: 768px) {
+  .a4-paper {
+    height: auto;
+  }
+  .slider {
+    height: 400px;
+  }
+}
