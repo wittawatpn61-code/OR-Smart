@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
-// ===== SLIDER (ทีละ 2 รูป) =====
+// ===== SLIDER (2 รูปต่อสไลด์) =====
 let knowledgeIndex = 0;
 const knowledgeSlides = document.querySelectorAll(".knowledge-a4-slider .slide");
 
@@ -510,7 +510,7 @@ showKnowledgeSlide();
 setInterval(showKnowledgeSlide, 5000);
 
 
-// ===== LIGHTBOX (ยังใช้ได้เหมือนเดิม) =====
+// ===== LIGHTBOX =====
 const knowledgeLightbox = document.getElementById("knowledge-lightbox");
 const knowledgeLightboxImg = document.getElementById("knowledge-lightbox-img");
 const knowledgeCloseBtn = knowledgeLightbox.querySelector(".close");
@@ -524,7 +524,6 @@ allImages.forEach(img => {
   });
 });
 
-// ปิด
 knowledgeCloseBtn.onclick = ()=> knowledgeLightbox.style.display = "none";
 
 knowledgeLightbox.onclick = (e)=>{
