@@ -557,7 +557,7 @@ function showActivitySlide(){
 setInterval(showActivitySlide, 10000);
 </script>
 
-<!-- ===== KNOWLEDGE A4 SLIDER ขนาด A4 ===== -->
+<!-- ===== KNOWLEDGE A4 SLIDER ===== -->
 <section class="knowledge-a4-slider">
   <div class="a4-paper">
 
@@ -567,168 +567,36 @@ setInterval(showActivitySlide, 10000);
     </h2>
 
     <div class="slider">
-  <div class="slide active">
-    <img src="assets/img/01.jpg">
-    <img src="assets/img/02.jpg">
-  </div>
 
-  <div class="slide">
-    <img src="assets/img/03.jpg">
-    <img src="assets/img/04.jpg">
-  </div>
+      <!-- ชุดที่ 1 -->
+      <div class="slide active">
+        <img src="assets/img/01.jpg" alt="img1">
+        <img src="assets/img/02.jpg" alt="img2">
+      </div>
 
-  <div class="slide">
-    <img src="assets/img/S__42688523.jpg">
-    <img src="assets/img/06.jpg">
-  </div>
-</div>
+      <!-- ชุดที่ 2 -->
+      <div class="slide">
+        <img src="assets/img/03.jpg" alt="img3">
+        <img src="assets/img/04.jpg" alt="img4">
+      </div>
+
+      <!-- ชุดที่ 3 -->
+      <div class="slide">
+        <img src="assets/img/S__42688523.jpg" alt="img5">
+        <img src="assets/img/06.jpg" alt="img6">
+      </div>
+
+    </div>
 
   </div>
 </section>
 
+
 <!-- ===== LIGHTBOX ===== -->
 <div class="lightbox" id="knowledge-lightbox">
   <span class="close">&times;</span>
-  <img id="knowledge-lightbox-img">
+  <img id="knowledge-lightbox-img" alt="preview">
 </div>
-
-<style>
-/* ===== A4 PAPER ===== */
-.knowledge-a4-slider{
-  display:flex;
-  justify-content:center;
-  background:#f0f0f0;
-  padding:40px 0;
-}
-
-.a4-paper{
-  width:210mm;      /* A4 width */
-  min-height:297mm; /* A4 height */
-  background:white;
-  padding:20mm;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* TITLE */
-.title{
-  text-align:center;
-  margin-bottom:20px;
-  color:#0f8a5f;
-}
-
-/* SLIDER */
-.slider{
-  position:relative;
-  width:100%;
-  /* กรอบรูปภายใน slider 5:7 */
-  aspect-ratio:5 / 7;
-  overflow:hidden;
-  border-radius:12px;
-  margin-top:30px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.slider img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:opacity 1s ease;
-  cursor:pointer;
-}
-
-.slider img.active{
-  opacity:1;
-}
-
-/* LIGHTBOX */
-#knowledge-lightbox{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.85);
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-#knowledge-lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
-}
-
-#knowledge-lightbox .close{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:40px;
-  color:white;
-  cursor:pointer;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .a4-paper{
-    width:180mm;
-    min-height:255mm;
-    padding:15mm;
-  }
-  .slider{
-    aspect-ratio:5/7;
-  }
-}
-
-@media(max-width:480px){
-  .a4-paper{
-    width:150mm;
-    min-height:210mm;
-    padding:10mm;
-  }
-  .slider{
-    aspect-ratio:5/7;
-  }
-}
-</style>
-
-<script>
-// ===== SLIDER LOGIC =====
-let knowledgeIndex = 0;
-const knowledgeSlides = document.querySelectorAll(".knowledge-a4-slider .slider img");
-
-function showKnowledgeSlide(){
-  knowledgeSlides.forEach(img => img.classList.remove("active"));
-  knowledgeSlides[knowledgeIndex].classList.add("active");
-  knowledgeIndex = (knowledgeIndex + 1) % knowledgeSlides.length;
-}
-
-// สไลด์ทุก 6 วินาที
-setInterval(showKnowledgeSlide, 6000);
-
-// ===== LIGHTBOX LOGIC =====
-const knowledgeLightbox = document.getElementById("knowledge-lightbox");
-const knowledgeLightboxImg = document.getElementById("knowledge-lightbox-img");
-const knowledgeCloseBtn = knowledgeLightbox.querySelector(".close");
-
-knowledgeSlides.forEach(img => {
-  img.addEventListener("click", ()=>{
-    knowledgeLightbox.style.display = "flex";
-    knowledgeLightboxImg.src = img.src;
-  });
-});
-
-// ปิด lightbox
-knowledgeCloseBtn.onclick = ()=> knowledgeLightbox.style.display = "none";
-knowledgeLightbox.onclick = (e)=>{
-  if(e.target === knowledgeLightbox){
-    knowledgeLightbox.style.display = "none";
-  }
-};
-</script>
 
 <!-- DOCTOR & OR SCHEDULE -->
 <section class="or-schedule">
