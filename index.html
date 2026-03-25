@@ -1,369 +1,293 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>งานการพยาบาลห้องผ่าตัด | โรงพยาบาลมหาวิทยาลัยพะเยา</title>
+<title>งานการพยาบาลห้องผ่าตัด</title>
 
-<meta name="description" content="เว็บไซต์งานการพยาบาลห้องผ่าตัด โรงพยาบาลมหาวิทยาลัยพะเยา ข้อมูลบุคลากร ข่าวประชาสัมพันธ์ เอกสาร และกิจกรรม">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== ROOT ===== */
+/* =========================
+ROOT
+========================= */
 :root{
---primary:#0f8a5f;
---primary-dark:#0a6c49;
---primary-light:#eaf7f3;
---text:#1f2933;
---gray:#6b7280;
---border:#25334e;
---bg:#f8fafc;
+  --primary:#0d47a1;
+  --secondary:#00a8a8;
+  --bg:#f7f9fc;
+  --text:#1b2a3a;
+  --muted:#6b7c93;
+  --white:#ffffff;
+
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+  --radius:14px;
 }
 
-/* ===== BASE ===== */
-*{margin:0;padding:0;box-sizing:border-box;}
+/* GLOBAL */
 body{
-font-family:'IBM Plex Sans Thai',sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.7;
+  margin:0;
+  font-family:"Sarabun", sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
+img{width:100%;display:block}
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:0 20px;
-}
-
-/* ===== HEADER ===== */
+/* HEADER */
 .header{
-background:white;
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:1000;
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(10px);
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  z-index:1000;
 }
 
-.nav-container{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 0;
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
 }
 
 .logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:600;
-font-size:18px;
-color:var(--primary);
+  font-weight:700;
+  color:var(--primary);
 }
 
-.navbar ul{
-display:flex;
-list-style:none;
-gap:26px;
+.nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
 }
 
-.navbar a{
-text-decoration:none;
-color:var(--text);
-font-weight:500;
-transition:0.25s;
-}
-
-.navbar a:hover{color:var(--primary);}
-
-.mobile-menu{display:none;font-size:22px;}
-
-/* ===== HERO SLIDER ===== */
+/* HERO */
 .hero{
-position:relative;
-height:75vh;
-overflow:hidden;
+  height:90vh;
+  position:relative;
 }
 
-.hero-slider{
-position:absolute;
-width:100%;
-height:100%;
-}
-
-.hero-slider img{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:opacity 1s ease;
-}
-
-.hero-slider img.active{
-opacity:1;
+.hero img{
+  height:100%;
+  object-fit:cover;
 }
 
 .hero-overlay{
-position:relative;
-z-index:2;
-height:100%;
-background:rgba(0,0,0,0.35);
-display:flex;
-align-items:center;
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(13,71,161,0.85),
+    rgba(0,168,168,0.5)
+  );
+  display:flex;
+  align-items:center;
+  padding:0 60px;
+  color:white;
 }
 
-.hero-content{
-color:white;
-max-width:600px;
+.hero h1{
+  font-size:48px;
+  font-weight:800;
 }
 
-.hero h1{font-size:42px;margin-bottom:12px;}
-.hero p{font-size:18px;margin-bottom:26px;}
-
-.btn-primary{
-display:inline-flex;
-align-items:center;
-gap:8px;
-background:var(--primary);
-color:white;
-padding:12px 22px;
-border-radius:8px;
-text-decoration:none;
-transition:0.25s;
+.hero p{
+  font-size:20px;
+  max-width:600px;
 }
 
-.btn-primary:hover{background:var(--primary-dark);}
-
-/* ===== SECTION ===== */
-section{padding:70px 0;}
+/* SECTION */
+section{
+  padding:80px 40px;
+}
 
 .section-title{
-text-align:center;
-font-size:28px;
-margin-bottom:40px;
-color:var(--primary);
+  text-align:center;
+  font-size:30px;
+  margin-bottom:40px;
+  color:var(--primary);
 }
 
-/* ===== ABOUT ===== */
-.about-grid{
-display:grid;
-grid-template-columns:1fr 260px;
-gap:40px;
-align-items:center;
+/* ABOUT */
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
 }
 
-.about-icon{
-font-size:120px;
-color:var(--primary-light);
-text-align:center;
+.about img{
+  border-radius:14px;
 }
 
-/* ===== NEWS ===== */
-.news-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:24px;
+.about-box{
+  background:white;
+  padding:30px;
+  border-left:6px solid var(--secondary);
+  box-shadow:var(--shadow);
+  border-radius:var(--radius);
 }
 
-.news-card{
-background:white;
-padding:24px;
-border-radius:12px;
-border:1px solid var(--border);
-transition:0.25s;
+/* SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
-.news-card:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+.card{
+  background:white;
+  padding:25px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  transition:.3s;
 }
 
-/* ===== EVENTS ===== */
-.event-list{
-list-style:none;
-max-width:600px;
-margin:auto;
+.card:hover{
+  transform:translateY(-5px);
 }
 
-.event-list li{
-padding:12px 0;
-border-bottom:1px solid var(--border);
+/* PERSON */
+.person-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
 }
 
-.event-list i{
-color:var(--primary);
-margin-right:8px;
+.person-card{
+  text-align:center;
+  background:white;
+  padding:20px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
 }
 
-/* ===== DOCUMENT ===== */
-.doc-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+.person-card img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--secondary);
+  margin:auto;
 }
 
-.doc-card{
-background:white;
-padding:28px;
-text-align:center;
-border-radius:12px;
-border:1px solid var(--border);
-transition:0.25s;
+/* NEWS */
+.news-slider{
+  max-width:800px;
+  margin:auto;
+  position:relative;
 }
 
-.doc-card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(0,0,0,0.06);
+.news-slide{
+  display:none;
 }
 
-.doc-card i{
-font-size:34px;
-color:var(--primary);
-margin-bottom:10px;
+.news-slide.active{
+  display:block;
 }
 
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  box-shadow:var(--shadow);
+  border-radius:12px;
+  overflow:hidden;
+}
 
-/* ===== FOOTER ===== */
+th,td{
+  padding:14px;
+  text-align:center;
+}
+
+th{
+  background:var(--primary);
+  color:white;
+}
+
+/* FOOTER */
 .footer{
-background:var(--primary);
-color:white;
-text-align:center;
-padding:26px 0;
-font-size:14px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-.about-grid{grid-template-columns:1fr;}
-.about-icon{display:none;}
-}
-
-@media(max-width:768px){
-.navbar{display:none;}
-.mobile-menu{display:block;}
-.hero{height:65vh;}
-.hero h1{font-size:32px;}
+  background:var(--primary);
+  color:white;
+  text-align:center;
+  padding:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <!-- HEADER -->
-<header class="header">
-<div class="container nav-container">
-
-<div class="logo">
-<i class="fa-solid fa-hospital"></i>
-OR NURSE UPH
+<div class="header">
+  <div class="nav">
+    <div class="logo">OR NURSE UPH</div>
+    <div>
+      <a href="#">เกี่ยวกับ</a>
+      <a href="#">บุคลากร</a>
+      <a href="#">ข่าว</a>
+      <a href="#">ติดต่อ</a>
+    </div>
+  </div>
 </div>
-
-<nav class="navbar">
-<ul>
-<li><a href="#">เกี่ยวกับเรา</a></li>
-<li><a href="pages/personel.html">บุคลากร</a></li>
-<li><a href="#">ข่าวประชาสัมพันธ์</a></li>
-<li><a href="#">ดาวน์โหลด</a></li>
-<li><a href="#">ติดต่อ</a></li>
-</ul>
-</nav>
-
-<div class="mobile-menu">
-<i class="fa-solid fa-bars"></i>
-</div>
-
-</div>
-</header>
 
 <!-- HERO -->
 <section class="hero">
-
-  <div class="hero-slider">
-    <img src="assets/img/banner1.jpg" class="active">
-    <img src="assets/img/47467339-9385-498E-9FA0-7BF262614921_L0_001-29_1_2568 16_39_06.jpg">
-    <img src="assets/img/IMG_1624.jpg">
-  </div>
-
+  <img src="assets/img/hero.jpg">
   <div class="hero-overlay">
-    <div class="container hero-content">
+    <div>
       <h1>งานการพยาบาลห้องผ่าตัด</h1>
-      <p>
-        โรงพยาบาลมหาวิทยาลัยพะเยา<br>
-        บริการพยาบาลห้องผ่าตัดที่ได้มาตรฐาน ผ่าตัดถูกคน ผ่าตัดถูกข้าง ผ่าตัดถูกตำแหน่ง ปลอดภัย และทันสมัย
-      </p>
-      <a href="#" class="btn-primary">
-        <i class="fa-solid fa-circle-info"></i>
-        ดูข้อมูลเพิ่มเติม
-      </a>
+      <p>บริการพยาบาลห้องผ่าตัดที่ได้มาตรฐาน ปลอดภัย และทันสมัย</p>
     </div>
   </div>
-
 </section>
 
-<style>
-/* HERO SLIDER */
-.hero{
-  position:relative;
-  height:75vh;
-  overflow:hidden;
-}
+<!-- ABOUT -->
+<section>
+  <h2 class="section-title">เกี่ยวกับเรา</h2>
+  <div class="about">
+    <img src="assets/img/about.jpg">
+    <div class="about-box">
+      <p>ให้บริการด้านการพยาบาลห้องผ่าตัด ด้วยทีมงานมืออาชีพ...</p>
+    </div>
+  </div>
+</section>
 
-.hero-slider{
-  position:absolute;
-  width:100%;
-  height:100%;
-}
+<!-- SERVICES -->
+<section>
+  <h2 class="section-title">บริการ</h2>
+  <div class="services">
+    <div class="card">ผ่าตัดทั่วไป</div>
+    <div class="card">ผ่าตัดเฉพาะทาง</div>
+    <div class="card">CSSD</div>
+    <div class="card">ฉุกเฉิน</div>
+  </div>
+</section>
 
-.hero-slider img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:opacity 1s ease;
-}
+<!-- PERSON -->
+<section>
+  <h2 class="section-title">บุคลากร</h2>
+  <div class="person-grid">
+    <div class="person-card">
+      <img src="assets/img/p1.jpg">
+      <p>พยาบาล A</p>
+    </div>
+  </div>
+</section>
 
-.hero-slider img.active{
-  opacity:1;
-}
-
-/* HERO OVERLAY */
-.hero-overlay{
-  position:relative;
-  z-index:2;
-  height:100%;
-  background:rgba(0,0,0,0.35);
-  display:flex;
-  align-items:center;
-}
-
-.hero-content{
-  color:white;
-  max-width:600px;
-}
-
-.hero h1{
-  font-size:42px;
-  margin-bottom:12px;
-}
-
-.hero p{
-  font-size:18px;
-  margin-bottom:26px;
-}
-</style>
-
-<script>
+<!-- NEWS -->
+<section>
+  <h2 class="section-title">ข่าวประชาสัมพันธ์</h2>
+  <div class="news-slider">
+    <div class="news-slide active">
+      <img src="assets/img/11.jpg">
+    </div>
+  </div>
+</section>
 // ===== HERO SLIDER =====
 const heroImages = document.querySelectorAll(".hero-slider img");
 let heroIndex = 0;
