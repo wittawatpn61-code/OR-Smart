@@ -261,78 +261,29 @@ font-size:14px;
 
 <!-- HEADER -->
 <header class="header">
-  <div class="container nav-container">
+<div class="container nav-container">
 
-    <div class="logo">
-      <i class="fa-solid fa-hospital"></i> OR NURSE UPH
-    </div>
+<div class="logo">
+<i class="fa-solid fa-hospital"></i>
+OR NURSE UPH
+</div>
 
-    <nav class="navbar">
-      <ul>
-        <li><a href="#about">เกี่ยวกับเรา</a></li>
-        <li><a href="pages/personel.html">บุคลากร</a></li>
-        <li><a href="#news">ข่าวประชาสัมพันธ์</a></li>
-        <li><a href="#downloads">ดาวน์โหลด</a></li>
-        <li><a href="#contact">ติดต่อ</a></li>
-      </ul>
-    </nav>
+<nav class="navbar">
+<ul>
+<li><a href="#">เกี่ยวกับเรา</a></li>
+<li><a href="pages/personel.html">บุคลากร</a></li>
+<li><a href="#">ข่าวประชาสัมพันธ์</a></li>
+<li><a href="#">ดาวน์โหลด</a></li>
+<li><a href="#">ติดต่อ</a></li>
+</ul>
+</nav>
 
-    <div class="mobile-menu">
-      <i class="fa-solid fa-bars"></i>
-    </div>
+<div class="mobile-menu">
+<i class="fa-solid fa-bars"></i>
+</div>
 
-  </div>
+</div>
 </header>
-
-<!-- ตัวอย่าง section -->
-<section id="about"><h2>เกี่ยวกับเรา</h2></section>
-<section id="news"><h2>ข่าวประชาสัมพันธ์</h2></section>
-<section id="downloads"><h2>ดาวน์โหลด</h2></section>
-<section id="contact"><h2>ติดต่อ</h2></section>
-
-<!-- CSS -->
-<style>
-  body {margin:0; font-family: Arial, sans-serif;}
-  .header {background:#0073b1; color:#fff; padding:10px 0; position:sticky; top:0; z-index:1000;}
-  .nav-container {display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:0 20px;}
-  .logo i {margin-right:8px;}
-  .navbar ul {list-style:none; margin:0; padding:0; display:flex; gap:20px;}
-  .navbar a {color:#fff; text-decoration:none; font-weight:bold;}
-  .mobile-menu {display:none; font-size:24px; cursor:pointer;}
-
-  /* Mobile responsive */
-  @media (max-width:768px) {
-    .navbar {display:none; flex-direction:column; background:#0073b1; position:absolute; top:60px; left:0; width:100%;}
-    .navbar.active {display:flex;}
-    .navbar ul {flex-direction:column; gap:10px; padding:10px;}
-    .mobile-menu {display:block;}
-  }
-
-  section {padding:100px 20px; border-bottom:1px solid #ccc;}
-</style>
-
-<!-- JavaScript -->
-<script>
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const navbar = document.querySelector('.navbar');
-
-  // toggle mobile menu
-  mobileMenu.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-  });
-
-  // scroll smoothly to section
-  document.querySelectorAll('.navbar a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if(targetId.startsWith('#')) {
-        e.preventDefault();
-        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-        navbar.classList.remove('active'); // ปิดเมนูมือถือหลังคลิก
-      }
-    });
-  });
-</script>
 
 <!-- HERO -->
 <section class="hero">
