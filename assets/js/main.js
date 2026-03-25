@@ -428,3 +428,22 @@ setInterval(() => {
   showSlide(current);
 }, 5000);
 </script>
+
+<script>
+const slides = document.querySelectorAll(".slider img");
+let index = 0;
+
+function showSlide(i) {
+  slides.forEach(img => img.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+/* เริ่มต้น */
+showSlide(index);
+
+/* สไลด์ทุก 5 วินาที */
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}, 5000);
+</script>
