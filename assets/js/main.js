@@ -532,3 +532,22 @@ knowledgeLightbox.onclick = (e)=>{
   }
 };
 </script>
+
+<script>
+const slides = document.querySelectorAll('.slider img');
+let index = 0;
+
+function showSlide(i) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  slides[i].classList.add('active');
+}
+
+function nextSlide() {
+  index++;
+  if (index >= slides.length) index = 0;
+  showSlide(index);
+}
+
+// เริ่มสไลด์
+setInterval(nextSlide, 7000);
+</script>
