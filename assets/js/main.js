@@ -310,3 +310,33 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentIndex);
   }, intervalTime);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  let slides = document.querySelectorAll('.news-slide');
+  let currentIndex = 0;
+  const intervalTime = 6000; // 6 วินาที
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if(i === index) slide.classList.add('active');
+    });
+  }
+
+  // ปุ่มเลื่อน
+  document.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  document.querySelector('.next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  // สไลด์อัตโนมัติ
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }, intervalTime);
+});
