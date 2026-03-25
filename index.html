@@ -429,21 +429,69 @@ setInterval(showHeroSlide, 6000);
 }
 </style>
 
+<!-- ===== NEWS SLIDER ===== -->
 <section class="news">
   <div class="container">
 
     <h2 class="section-title">ข่าวประชาสัมพันธ์</h2>
 
     <div class="slider">
-      <img src="assets/img/11.jpg" class="active">
-      <img src="assets/img/12.jpg">
-      <img src="assets/img/13.jpg">
-      <img src="assets/img/14.jpg">
-      <img src="assets/img/15.jpg">
+      <img src="assets/img/11.jpg" class="slide active">
+      <img src="assets/img/12.jpg" class="slide">
+      <img src="assets/img/13.jpg" class="slide">
+      <img src="assets/img/14.jpg" class="slide">
+      <img src="assets/img/15.jpg" class="slide">
     </div>
 
   </div>
 </section>
+
+<style>
+/* ===== SLIDER STYLE ===== */
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* ปรับขนาดได้ */
+  aspect-ratio: 5 / 7; /* อัตราส่วน 5:7 */
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* รูป */
+.slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* รูปที่แสดง */
+.slider img.active {
+  opacity: 1;
+}
+</style>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlide() {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+
+  index++;
+  if (index >= slides.length) {
+    index = 0;
+  }
+}
+
+/* เปลี่ยนทุก 7 วินาที */
+setInterval(showSlide, 7000);
+</script>
 
 <!-- ===== ระบบออนไลน์ ===== -->
 <section class="documents">
