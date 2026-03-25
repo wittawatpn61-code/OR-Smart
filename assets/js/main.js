@@ -491,3 +491,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+<script>
+// ===== SLIDER (ทีละ 2 รูป) =====
+let knowledgeIndex = 0;
+const knowledgeSlides = document.querySelectorAll(".knowledge-a4-slider .slide");
+
+function showKnowledgeSlide(){
+  knowledgeSlides.forEach(s => s.classList.remove("active"));
+  knowledgeSlides[knowledgeIndex].classList.add("active");
+  knowledgeIndex = (knowledgeIndex + 1) % knowledgeSlides.length;
+}
+
+// เริ่มต้น
+showKnowledgeSlide();
+
+// เปลี่ยนทุก 5 วินาที
+setInterval(showKnowledgeSlide, 5000);
+
+
+// ===== LIGHTBOX (ยังใช้ได้เหมือนเดิม) =====
+const knowledgeLightbox = document.getElementById("knowledge-lightbox");
+const knowledgeLightboxImg = document.getElementById("knowledge-lightbox-img");
+const knowledgeCloseBtn = knowledgeLightbox.querySelector(".close");
+
+const allImages = document.querySelectorAll(".knowledge-a4-slider img");
+
+allImages.forEach(img => {
+  img.addEventListener("click", ()=>{
+    knowledgeLightbox.style.display = "flex";
+    knowledgeLightboxImg.src = img.src;
+  });
+});
+
+// ปิด
+knowledgeCloseBtn.onclick = ()=> knowledgeLightbox.style.display = "none";
+
+knowledgeLightbox.onclick = (e)=>{
+  if(e.target === knowledgeLightbox){
+    knowledgeLightbox.style.display = "none";
+  }
+};
+</script>
