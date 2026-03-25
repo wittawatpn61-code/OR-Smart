@@ -261,142 +261,29 @@ font-size:14px;
 
 <!-- HEADER -->
 <header class="header">
-  <div class="container nav-container">
+<div class="container nav-container">
 
-    <div class="logo">
-      <i class="fa-solid fa-hospital"></i>
-      OR NURSE UPH
-    </div>
+<div class="logo">
+<i class="fa-solid fa-hospital"></i>
+OR NURSE UPH
+</div>
 
-    <nav class="navbar">
-      <ul>
-        <li><a href="#about-section">เกี่ยวกับเรา</a></li>
-        <li><a href="pages/personel.html">บุคลากร</a></li>
-        <li><a href="#news-section">ข่าวประชาสัมพันธ์</a></li>
-        <li><a href="#documents-section">ดาวน์โหลด</a></li>
-        <li><a href="#contact-section">ติดต่อ</a></li>
-      </ul>
-    </nav>
+<nav class="navbar">
+<ul>
+<li><a href="#">เกี่ยวกับเรา</a></li>
+<li><a href="pages/personel.html">บุคลากร</a></li>
+<li><a href="#">ข่าวประชาสัมพันธ์</a></li>
+<li><a href="#">ดาวน์โหลด</a></li>
+<li><a href="#">ติดต่อ</a></li>
+</ul>
+</nav>
 
-    <div class="mobile-menu">
-      <i class="fa-solid fa-bars"></i>
-    </div>
+<div class="mobile-menu">
+<i class="fa-solid fa-bars"></i>
+</div>
 
-  </div>
+</div>
 </header>
-
-<!-- SECTION ตัวอย่าง -->
-<section id="about-section">
-  <h2>เกี่ยวกับหน่วยงาน</h2>
-  <p>เนื้อหาเกี่ยวกับหน่วยงาน...</p>
-</section>
-
-<section id="news-section">
-  <h2>ข่าวประชาสัมพันธ์</h2>
-  <p>เนื้อหาข่าวประชาสัมพันธ์...</p>
-</section>
-
-<section id="documents-section">
-  <h2>หมวดหมู่เอกสาร</h2>
-  <p>เนื้อหาเอกสาร...</p>
-</section>
-
-<section id="contact-section">
-  <h2>ติดต่อ</h2>
-  <p>เนื้อหาส่วนติดต่อ...</p>
-</section>
-
-<style>
-/* ===== HEADER ===== */
-.header {
-  background: #007BFF;
-  color: white;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.navbar ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.navbar ul li {
-  margin-left: 20px;
-}
-.navbar ul li a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.navbar ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Mobile Menu */
-.mobile-menu {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .navbar {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #007BFF;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    text-align: center;
-  }
-  .navbar ul {
-    flex-direction: column;
-  }
-  .navbar ul li {
-    margin: 10px 0;
-  }
-  .mobile-menu {
-    display: block;
-  }
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* SECTION ตัวอย่าง */
-section {
-  padding: 100px 20px;
-  border-bottom: 1px solid #ddd;
-}
-</style>
-
-<script>
-// Toggle mobile menu
-const mobileMenu = document.querySelector('.mobile-menu');
-const navbar = document.querySelector('.navbar');
-
-mobileMenu.addEventListener('click', () => {
-  navbar.style.display = navbar.style.display === 'flex' ? 'none' : 'flex';
-});
-</script>
 
 <!-- HERO -->
 <section class="hero">
