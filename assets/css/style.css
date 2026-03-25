@@ -931,11 +931,12 @@ background:var(--primary);
   }
 }
 
-/* SLIDER */
+/* ===== SLIDER ===== */
 .slider{
   position:relative;
   width:100%;
-  aspect-ratio:5 / 7;
+  height:500px; /* ความสูงพอดีเว็บ */
+  max-height:70vh;
   overflow:hidden;
   border-radius:12px;
   margin-top:30px;
@@ -948,7 +949,7 @@ background:var(--primary);
   width:100%;
   height:100%;
   display:flex;
-  gap:10px;
+  gap:15px;
   opacity:0;
   transition:opacity 1s ease;
 }
@@ -962,13 +963,17 @@ background:var(--primary);
 .slide img{
   width:50%;
   height:100%;
-  object-fit:cover;
+  object-fit:cover; /* เต็มกรอบ */
   border-radius:10px;
   cursor:pointer;
 }
 
-/* 📱 มือถือ = เหลือ 1 รูป */
+/* 📱 มือถือ */
 @media(max-width:768px){
+  .slider{
+    height:350px;
+  }
+
   .slide{
     flex-direction:column;
   }
